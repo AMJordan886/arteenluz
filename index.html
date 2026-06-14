@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arte en Luz — Cuadros Iluminados para Regalos Emotivos</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="theme.js"></script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased overflow-x-hidden">
+<!-- Navigation -->
+<div class="fixed top-0 z-50 w-full transition-all duration-500 bg-background-dark/60 backdrop-blur-lg border-b border-[#2a2a2a]/20">
+<div class="px-4 md:px-10 lg:px-40 flex items-center justify-between py-3">
+<a class="flex items-center gap-3 text-white group" href="index.html">
+<div class="size-7 text-primary transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined !text-2xl">light_mode</span>
+</div>
+<h2 class="text-white text-base font-bold leading-tight tracking-luxury font-serif">Arte en Luz</h2>
+</a>
+<!-- Desktop Menu -->
+<div class="hidden md:flex flex-1 justify-end gap-10 items-center">
+<nav class="flex items-center gap-10">
+<a class="text-primary text-xs font-bold tracking-luxury uppercase border-b border-primary pb-0.5" href="index.html">Inicio</a>
+<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="catalog.html">Catálogo</a>
+<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="bts.html">El Arte</a>
+<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="moments.html">Regalos</a>
+<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="contact.html">Contacto</a>
+</nav>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full size-9 bg-transparent hover:bg-primary/10 text-white/60 hover:text-primary transition-all duration-300 border border-white/10 hover:border-primary/30">
+<span class="material-symbols-outlined text-lg">shopping_bag</span>
+</button>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-white/70">
+<span class="material-symbols-outlined cursor-pointer">menu</span>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="relative flex min-h-screen w-full flex-col justify-center items-center overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark/70 via-background-dark/40 to-background-dark z-10"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Warmly lit minimalist living room with glowing decor at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXZnhXDJZKAsa-xsHXGzBmj2Tg2UWHi6iFHcyeKqESLYobYi97bpMHqqepRcSM9tO8VMxwFbFCDBYwEDMuT3Br_SuISPm5s8_QxRojMvQ4jeaeh2jZP_K2V895RVLU05Hu3fwc_B5jjJyWzpPnUezPN9JumgRNA52h9TuX7nPpXJKnP7vLzO5e3V8kILTC2ukt3QwD_Yx5Out4WgB9Otv-7dFlMQyb-MJiwC2fRK2J_jKvnRtrbQQzmdNh2nro-42pRUDDikiBi-Kk');"></div>
+</div>
+<div class="layout-container z-10 flex flex-col justify-center items-center px-4 md:px-40 w-full h-full pt-20">
+<div class="max-w-[1000px] text-center flex flex-col gap-8 items-center animate-fade-in-up">
+<span class="text-primary text-xs font-bold tracking-luxury uppercase opacity-80">Personalización Exclusiva</span>
+<h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] tracking-tight drop-shadow-lg">
+                    Captura tus<br/>Momentos en <span class="text-primary italic">Luz</span>
+</h1>
+<h2 class="text-white/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl drop-shadow-md">
+                    Transformamos tus fotografías favoritas en <span class="text-white font-medium">cuadros iluminados de lujo</span>. Obras que cobran vida al encenderse y emocionan cada vez que se miran.
+                </h2>
+<div class="flex gap-6 mt-2">
+<a href="catalog.html" class="flex cursor-pointer items-center justify-center rounded-full h-12 px-10 bg-primary hover:bg-primary/90 text-background-dark text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-[0_0_30px_rgba(212,168,67,0.3)] hover:shadow-[0_0_40px_rgba(212,168,67,0.5)]">
+                        Ver Colección
+                    </a>
+<a href="bts.html" class="flex cursor-pointer items-center justify-center rounded-full h-12 px-10 border border-white/20 hover:border-white/60 bg-white/[0.04] hover:bg-white/10 text-white/80 hover:text-white text-sm font-medium tracking-wider uppercase transition-all duration-300 backdrop-blur-sm">
+                        Cómo Funciona
+                    </a>
+</div>
+</div>
+</div>
+<!-- Scroll indicator -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Features Section -->
+<div class="relative bg-background-dark py-24 px-4 md:px-40">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col gap-20">
+<div class="flex flex-col gap-4 text-center max-w-2xl mx-auto">
+<span class="text-primary text-xs font-bold tracking-luxury uppercase">Elegancia Artesanal</span>
+<h2 class="text-white font-serif italic text-3xl md:text-4xl font-medium">Por qué elegir Arte en Luz</h2>
+<p class="text-white/50 text-base font-light leading-relaxed">
+                        Cada pieza es una obra maestra esculpida digitalmente con precisión milimétrica, fabricada con los más altos estándares artesanales.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="flex flex-col items-center text-center gap-5 p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group hover:border-primary/20">
+<div class="p-4 rounded-full bg-primary/5 text-primary/90 group-hover:bg-primary/10 group-hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined !text-4xl font-thin">precision_manufacturing</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-medium font-serif">Emoción en Cada Detalle</h3>
+<p class="text-white/40 text-sm font-light leading-relaxed">
+                                Cada pliegue de luz está diseñado para que el recuerdo se sienta tan real como el día en que ocurrió.
+                            </p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col items-center text-center gap-5 p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group hover:border-primary/20">
+<div class="p-4 rounded-full bg-primary/5 text-primary/90 group-hover:bg-primary/10 group-hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined !text-4xl font-thin">eco</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-medium font-serif">Artesanía Exclusiva</h3>
+<p class="text-white/40 text-sm font-light leading-relaxed">
+                                Cada cuadro iluminado es una pieza única hecha a mano con materiales nobles. Un regalo que trasciende el tiempo.
+                            </p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col items-center text-center gap-5 p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group hover:border-primary/20">
+<div class="p-4 rounded-full bg-primary/5 text-primary/90 group-hover:bg-primary/10 group-hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined !text-4xl font-thin">local_shipping</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-medium font-serif">Listo para Regalar</h3>
+<p class="text-white/40 text-sm font-light leading-relaxed">
+                                Presentado en un estuche premium con lazo dorado. Llega a quien más quieres sin necesidad de envolverlo.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Showcase / Carousel -->
+<div class="relative bg-[#0a0a0a] py-24 border-y border-white/[0.06]">
+<div class="max-w-[1400px] mx-auto px-4 md:px-10 lg:px-40">
+<div class="flex justify-between items-end mb-14">
+<div>
+<span class="text-primary text-xs font-bold tracking-luxury uppercase mb-2 block">Colección</span>
+<h2 class="text-white font-serif italic text-3xl md:text-4xl font-medium mb-2">Obras Destacadas</h2>
+<p class="text-white/40 text-sm font-light">Piezas favoritas de nuestros coleccionistas</p>
+</div>
+<a class="hidden md:flex items-center gap-2 text-primary hover:text-white transition-colors text-xs font-bold tracking-luxury uppercase group" href="catalog.html">
+                    Ver Catálogo
+                    <span class="material-symbols-outlined !text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="flex overflow-x-auto scrollbar-hide snap-x gap-8 pb-8 -mx-4 px-4 md:mx-0 md:px-0">
+<!-- Product Card 1 -->
+<div class="min-w-[280px] md:min-w-[360px] snap-center group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-2xl mb-5 border border-white/[0.06] group-hover:border-primary/20 transition-all duration-500">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Cuadro iluminado con fotografía familiar sobre mesa de madera" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBn0cqJGroyli9mJYD3ICikP_ti-EYoyMQihk3Br-r1D6aIRmTdQE_3GSKdlDOmiYp3wTRHwGg09DmYUARDc46B6l5quhNmQ6WTfPrdpXsC9El3p-Qog9PTJz0J6p3HVjaUqrX8ecii-9sUf_KS-fvK1RaMbUixVqrsF-ryh141ReeO1_IHqGCK60UfkWthC9-W_Ww__o6vhdnJOveJiJum0SjRprNO76CzbZ3z1xJDiZjDojdyXZQ9apLkmaMLnYgwDoLvRnIi0ohT');"></div>
+<div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 duration-500">
+<button class="bg-primary text-background-dark p-3.5 rounded-full hover:bg-white transition-colors shadow-xl hover:shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col px-1">
+<h3 class="text-white text-xl font-serif font-medium group-hover:text-primary transition-colors duration-500">Recuerdos Eternos</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-white/30 text-sm font-light">Marco de madera noble</span>
+<span class="text-white font-medium tracking-wide">89€</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="min-w-[280px] md:min-w-[360px] snap-center group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-2xl mb-5 border border-white/[0.06] group-hover:border-primary/20 transition-all duration-500">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Marco iluminado colgado en pared con fotografía de pareja" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4FBxUMzAv-ui1-kWvCKTL5G_n4q6PwDjcYNObB3X4tWNk4lp5n_n-O_Q2ikTAS-SRPiWnT84_-qdCbZuLyLouReQDi_CcYtfXivEqAsKEuR_2eVZbQ-XHRkdxIGVd6VzhmmSoC8LbhRdfSGnPYQvAOYiZRX2bqdYCUGAR0_D6MWoXtxVMuyWpvE9lHxAOqYpDxUYbIGI74a2vKfhKMEHMtA2Gp7XJf5rXEGCNP40NoDI3VK8Cnnk_0smr5q0f30mkf4zdkiRPHeNE');"></div>
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-primary/90 text-background-dark text-xs font-bold tracking-wider px-3 py-1.5 rounded-full">Best Seller</span>
+</div>
+<div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 duration-500">
+<button class="bg-primary text-background-dark p-3.5 rounded-full hover:bg-white transition-colors shadow-xl hover:shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col px-1">
+<h3 class="text-white text-xl font-serif font-medium group-hover:text-primary transition-colors duration-500">Siempre Juntos</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-white/30 text-sm font-light">Marco premium con luz LED</span>
+<span class="text-white font-medium tracking-wide">120€</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="min-w-[280px] md:min-w-[360px] snap-center group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-2xl mb-5 border border-white/[0.06] group-hover:border-primary/20 transition-all duration-500">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Cuadro iluminado con forma de corazón mostrando recuerdo familiar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhYYS5UyIFWCL3u97sykNQnq7ycUtJpu_dQvuEhm2PUCYTkSe7s1tHXn60fys5TuDIYtdnc0jRvrNgFgzun6RiULOr1z0bKohJrrmlgsyxHKp5KImSyHgEr03i4uoqYJU1dMbUZ20NjiiBRPa4W_l7pVNeALs6IN3dl5cXSu-etdwXJvMPyQHzS5kCj8SGRzMGGOjNHLm664FL36opiN67B7p17ilA3ZwNutPEeM5xdQX255hDId5f_0GlVCrZUmTvaCB8ShXuvEFT');"></div>
+<div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 duration-500">
+<button class="bg-primary text-background-dark p-3.5 rounded-full hover:bg-white transition-colors shadow-xl hover:shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col px-1">
+<h3 class="text-white text-xl font-serif font-medium group-hover:text-primary transition-colors duration-500">Abrazo de Luz</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-white/30 text-sm font-light">Forma corazón premium</span>
+<span class="text-white font-medium tracking-wide">89€</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="min-w-[280px] md:min-w-[360px] snap-center group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-2xl mb-5 border border-white/[0.06] group-hover:border-primary/20 transition-all duration-500">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Panel curvo iluminado con fotografía panorámica de paisaje" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWJ3rJlNw5r3mWg8W-NcYVcT5yura0fhpR1mYPbugHux_KkDD1tv2_AW96HHKxGm9Hv95OjAI3jAeFhaIWcV1FhUksF_0QfdaL98tg7S377g5IYsc3CgcJDukTzmH94F9G5JWknogXjBT7JiovovCfpdKjHN1k0sR_7i2oA7U-UNE1o-2gE4WLbkrvrnCko7Vhw1NQo08WmYplMWjVkSZ3iK26VuGFEp2ZRKjk-pscuB2622-hzj9MXo8_8xHZuyCs7WlQiRPaeoC_');"></div>
+<div class="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 duration-500">
+<button class="bg-primary text-background-dark p-3.5 rounded-full hover:bg-white transition-colors shadow-xl hover:shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col px-1">
+<h3 class="text-white text-xl font-serif font-medium group-hover:text-primary transition-colors duration-500">Instante Perfecto</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-white/30 text-sm font-light">Formato panorámico</span>
+<span class="text-white font-medium tracking-wide">95€</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:hidden mt-8 text-center">
+<a class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors text-sm font-bold tracking-luxury uppercase group" href="catalog.html">
+                    Ver Catálogo Completo
+                    <span class="material-symbols-outlined !text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Testimonial Section -->
+<div class="py-28 px-4 md:px-40 bg-background-dark relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/[0.04] rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/[0.04] rounded-full blur-[120px]"></div>
+<div class="max-w-[800px] mx-auto text-center relative z-10 flex flex-col items-center gap-10">
+<div class="text-primary/30">
+<span class="material-symbols-outlined !text-7xl font-thin">format_quote</span>
+</div>
+<p class="text-white/90 text-2xl md:text-4xl font-serif italic leading-[1.6]">
+                "El regalo más emotivo que he hecho jamás. Ver la foto de mis abuelos cobrar vida con la luz fue una experiencia mágica. La calidad del detalle es simplemente impresionante."
+            </p>
+<div class="flex flex-col items-center gap-3">
+<div class="flex text-primary/80 gap-1">
+<span class="material-symbols-outlined !text-xl">star</span>
+<span class="material-symbols-outlined !text-xl">star</span>
+<span class="material-symbols-outlined !text-xl">star</span>
+<span class="material-symbols-outlined !text-xl">star</span>
+<span class="material-symbols-outlined !text-xl">star</span>
+</div>
+<div class="text-white font-medium font-serif text-lg">Sofía Rodríguez</div>
+<div class="text-white/30 text-sm">Cliente Verificado · Madrid</div>
+</div>
+</div>
+</div>
+<!-- Builder CTA -->
+<div class="relative py-28 bg-background-dark overflow-hidden border-t border-white/[0.06]">
+<div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-5xl font-serif italic font-medium text-white mb-6">Crea tu Obra Maestra</h2>
+<p class="text-white/40 text-lg font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                Sube tu fotografía favorita y visualiza cómo se transforma en un cuadro iluminado único.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<a href="builder.html" class="h-14 px-12 rounded-full bg-primary text-background-dark text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-all duration-300 shadow-[0_0_30px_rgba(212,168,67,0.3)] hover:shadow-[0_0_40px_rgba(212,168,67,0.5)] flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">upload_file</span>
+                    Subir mi Foto
+                </a>
+<a href="catalog.html" class="h-14 px-12 rounded-full border border-white/20 text-white/60 text-sm font-medium uppercase tracking-wider hover:bg-white/[0.04] hover:text-white hover:border-white/40 transition-all duration-300 flex items-center justify-center">
+                    Ver Colección
+                </a>
+</div>
+<p class="mt-10 text-[10px] text-white/20 uppercase tracking-luxury">Envíos gratuitos · Garantía de por vida</p>
+</div>
+</div>
+<!-- Newsletter / CTA -->
+<div class="border-t border-white/[0.06] bg-surface-dark py-20 px-4 md:px-40">
+<div class="max-w-[960px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+<div class="flex-1 text-center md:text-left">
+<h3 class="text-white text-2xl font-serif italic font-medium mb-2">Únete al Club de la Luz</h3>
+<p class="text-white/40 text-sm font-light">Recibe ofertas exclusivas y novedades sobre nuevas colecciones.</p>
+</div>
+<div class="flex-1 w-full max-w-md">
+<form class="flex gap-2 w-full">
+<input class="flex-1 bg-white/[0.04] border border-white/[0.08] text-white/80 px-5 rounded-2xl focus:outline-none focus:border-primary/40 transition-all duration-300 h-12 placeholder:text-white/20 text-sm" placeholder="Tu correo electrónico" type="email"/>
+<button class="bg-primary hover:bg-primary-dark text-background-dark font-bold tracking-wider text-xs uppercase px-7 rounded-2xl h-12 transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,168,67,0.3)]" type="button">
+                        Suscribirse
+                    </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-white/[0.06] py-16 px-4 md:px-40">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 text-white mb-4">
+<span class="material-symbols-outlined text-primary">light_mode</span>
+<span class="font-serif font-medium tracking-luxury text-base uppercase">Arte en Luz</span>
+</div>
+<p class="text-white/30 text-sm font-light leading-relaxed">
+                    Creando conexiones emocionales a través de cuadros iluminados hechos con alma.
+                </p>
+</div>
+<div>
+<h4 class="text-white/50 font-medium mb-5 uppercase text-xs tracking-luxury">Explorar</h4>
+<ul class="flex flex-col gap-3 text-sm text-[#a1a1aa]">
+<li><a class="hover:text-primary transition-colors" href="catalog.html">Catálogo</a></li>
+<li><a class="hover:text-primary transition-colors" href="moments.html">Ocasiones Especiales</a></li>
+<li><a class="hover:text-primary transition-colors text-white/30 hover:text-white/80" href="catalog.html">Cuadros</a></li>
+<li><a class="hover:text-primary transition-colors text-white/30 hover:text-white/80" href="#">Tarjetas Regalo</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white/50 font-medium mb-5 uppercase text-xs tracking-luxury">Ayuda</h4>
+<ul class="flex flex-col gap-3 text-sm text-white/30">
+<li><a class="hover:text-white/80 transition-colors" href="#">Envíos y Devoluciones</a></li>
+<li><a class="hover:text-white/80 transition-colors" href="#">Preguntas Frecuentes</a></li>
+<li><a class="hover:text-white/80 transition-colors" href="#">Cuidado del Producto</a></li>
+<li><a class="hover:text-white/80 transition-colors" href="contact.html">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white/50 font-medium mb-5 uppercase text-xs tracking-luxury">Síguenos</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-all duration-300" href="#">
+<span class="text-xs tracking-luxury">IG</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-all duration-300" href="#">
+<span class="text-xs tracking-luxury">FB</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-all duration-300" href="#">
+<span class="text-xs tracking-luxury">PI</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/20">
+<p>© 2024 Arte en Luz. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="hover:text-white/60 transition-colors" href="#">Política de Privacidad</a>
+<a class="hover:text-white/60 transition-colors" href="#">Términos de Servicio</a>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/34XXXXXXXXX?text=Hola%20Arte%20en%20Luz%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cuadros%20iluminados" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 size-14 flex items-center justify-center rounded-full bg-[#25D366] hover:bg-[#20bd5a] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-bounce-slow">
+<svg viewBox="0 0 24 24" class="size-7 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body></html>

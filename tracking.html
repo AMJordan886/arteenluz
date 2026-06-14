@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mi Cuenta - Seguimiento de tu Obra de Arte</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="theme.js"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#1C1C1E] dark:text-white font-display overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Side Navigation -->
+<aside class="hidden md:flex flex-col w-72 h-full bg-[#1e1b0d] border-r border-white/5">
+<div class="p-8 pb-4">
+<!-- User Profile Summary -->
+<div class="flex items-center gap-4 mb-8">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border border-primary/30">
+<div class="w-full h-full bg-cover bg-center" data-alt="Portrait of a user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPdHV4T91gZ6qElrJ4k-U2Z56UmEaqqZIUxGV-eaHa9y65Es72cfv6hpMJir0Ckbv-xHnq9UQBR0wVHZq2xwEttjGmuAko4iDgZ4jFMDa5cL0u2zoT7ajGmEoZrYKnCWiFGC5W2-TXqz6lv3-QVhkfH5CAnVSmYI107jgxF3lIkm-7lmNl3C_DcuxS2NmenLp8Ec-1nRJStBjptbpnfAqzUQCrr9bdn4LosgF13vwa0Lk7qJjetoWHHYrfvAJrWjUUYpnq70W5eLQT");'></div>
+</div>
+<div class="flex flex-col">
+<h2 class="text-white text-base font-semibold">Carlos M.</h2>
+<p class="text-white/60 text-xs tracking-wide">MIEMBRO GOLD</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20 transition-all hover:bg-primary/20 group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">package_2</span>
+<span class="text-white text-sm font-medium">Mis Pedidos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all group text-white/70 hover:text-white" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="text-sm font-medium">Perfil</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all group text-white/70 hover:text-white" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">location_on</span>
+<span class="text-sm font-medium">Direcciones</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-8">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-500/10 transition-all group text-white/70 hover:text-red-400" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">logout</span>
+<span class="text-sm font-medium">Cerrar Sesión</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 h-full overflow-y-auto relative">
+<!-- Mobile Header (Visible only on small screens) -->
+<div class="md:hidden flex items-center justify-between p-4 border-b border-white/5 bg-[#1e1b0d]">
+<span class="material-symbols-outlined text-white">menu</span>
+<span class="text-white font-bold">Mi Cuenta</span>
+<div class="w-8 h-8 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxF1gK8rXl71XqZoNC0DJe77T-VZgN9-qxaTv94WyKl9jF4cNOQGUgujFCv6ttXAfUgW-QaOyo7KfwPELXm7UF7ju9roexzJp1Rr521yK7BCIQaUnxTUFX2-BODfVkpilGH0xHa_6Wz0TWh21oh3jeqpS29rIrkSYGokQj3N1psZ4K-VNPvaAHxtuXsCnMUQd3mmldcjaXvazNB9R5nIRQtAR7pYyjpHzRr1YiPNalbvPqX_ioHOkoU2RXLrvzmn0_J4Au1zzVmzvt");'></div>
+</div>
+<div class="max-w-5xl mx-auto px-6 py-8 md:px-12 md:py-12">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-3xl md:text-4xl font-light text-white mb-2 tracking-tight">Seguimiento de tu Obra</h1>
+<p class="text-white/50 font-light text-lg">Estado actual del pedido <span class="text-primary font-normal">#8291</span></p>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-sm font-medium text-white/90 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                        Ayuda Personalizada
+                    </button>
+</div>
+<!-- Main Tracking Card -->
+<div class="bg-[#1e1b0d]/80 backdrop-blur-md rounded-2xl border border-white/5 shadow-2xl overflow-hidden">
+<!-- Card Header -->
+<div class="px-6 py-4 border-b border-white/5 bg-white/5 flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-sm font-medium text-primary uppercase tracking-wider">En Progreso</span>
+</div>
+<p class="text-sm text-white/40">Entrega estimada: <span class="text-white font-medium">24 de Octubre</span></p>
+</div>
+<div class="flex flex-col lg:flex-row">
+<!-- Left: Product Details -->
+<div class="p-6 lg:p-8 flex-1 lg:max-w-[45%] flex flex-col gap-6 border-b lg:border-b-0 lg:border-r border-white/5">
+<div class="aspect-[4/3] w-full rounded-xl overflow-hidden bg-black/50 relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Primer plano de un cuadro iluminado retroiluminado mostrando un retrato familiar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDb3-ajckwtH_BZ1DkOeNxJpUvbeXUgAtSz75xYGPp95Wv1TkDT6_xrUP8A5CkmRYx9f0yFHBKUeWBuN_JmH2pWCqrX7EQbdyc6Bs0QLQk3jqLSLauNCxqhG_6neflW0PFA2wqbTT10A4w2QqvPLrthpyRsXhVrhjx3IEVYbthqoajXOgPT6mQmyWw5rtRQDSpk6i3DhtSayfZs7fUnoDX-Cyaz0dzlOv0BMzF8Eaf0GhHBhiTjxQnU_LBU3lv9rydHiZTYUtpMwY3m");'></div>
+<div class="absolute bottom-4 left-4 right-4 z-20">
+<span class="inline-block px-2 py-1 bg-black/40 backdrop-blur-md rounded text-[10px] text-white/80 uppercase tracking-widest mb-1 border border-white/10">Personalizado</span>
+<h3 class="text-white font-semibold text-lg leading-tight">Cuadro Iluminado "Recuerdos de Verano"</h3>
+<p class="text-white/60 text-sm mt-1">Tamaño 15cm • Resina Premium • Luz Cálida</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 px-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-colors">
+                                    Ver Detalles del Pedido
+                                </button>
+<button aria-label="Descargar Factura" class="py-3 px-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</button>
+</div>
+</div>
+<!-- Right: Timeline -->
+<div class="p-6 lg:p-8 flex-1 bg-gradient-to-b from-transparent to-black/20">
+<h3 class="text-white/90 font-medium mb-8">Progreso de la manufactura</h3>
+<div class="flex flex-col relative pl-2">
+<!-- Connecting line background -->
+<div class="absolute left-[19px] top-2 bottom-10 w-[2px] bg-white/10"></div>
+<!-- Step 1: Completed -->
+<div class="flex gap-4 mb-8 relative z-10 group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center shadow-[0_0_15px_rgba(249,212,6,0.1)]">
+<span class="material-symbols-outlined text-[20px] filled">image</span>
+</div>
+</div>
+<div class="pt-1">
+<h4 class="text-white font-medium text-base">Imagen Recibida</h4>
+<p class="text-white/40 text-sm mt-1">Tu foto ha sido procesada y optimizada para la impresión.</p>
+<span class="text-primary text-xs font-medium mt-2 block">Completado • 20 Oct</span>
+</div>
+</div>
+<!-- Step 2: Active -->
+<div class="flex gap-4 mb-8 relative z-10">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary text-background-dark flex items-center justify-center shadow-[0_0_20px_rgba(249,212,6,0.4)] ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-[20px] filled animate-pulse">print</span>
+</div>
+</div>
+<div class="pt-1">
+<h4 class="text-white font-medium text-base">En Proceso de Diseño</h4>
+<p class="text-white/40 text-sm mt-1">Nuestros artesanos están dando vida a tu recuerdo con todo el cariño.</p>
+<span class="text-primary text-xs font-medium mt-2 block">En progreso...</span>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex gap-4 mb-8 relative z-10 opacity-50">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/20 text-white/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</div>
+</div>
+<div class="pt-1">
+<h4 class="text-white font-medium text-base">Control de Calidad</h4>
+<p class="text-white/40 text-sm mt-1">Verificación manual de detalles y translucidez.</p>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex gap-4 relative z-10 opacity-50">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/20 text-white/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+</div>
+<div class="pt-1">
+<h4 class="text-white font-medium text-base">Enviado</h4>
+<p class="text-white/40 text-sm mt-1">Tu obra será empaquetada y enviada con cuidado.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Suggested Actions / FAQ (Optional filler for layout balance) -->
+<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-xl border border-white/5 hover:border-white/10 bg-white/[0.02] transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-3 rounded-lg bg-white/5 group-hover:bg-primary/20 group-hover:text-primary transition-colors text-white/70">
+<span class="material-symbols-outlined">design_services</span>
+</div>
+<div>
+<h4 class="text-white font-medium">¿Cómo cuidar tu cuadro iluminado?</h4>
+<p class="text-white/40 text-sm">Guía de mantenimiento y limpieza</p>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl border border-white/5 hover:border-white/10 bg-white/[0.02] transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-3 rounded-lg bg-white/5 group-hover:bg-primary/20 group-hover:text-primary transition-colors text-white/70">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div>
+<h4 class="text-white font-medium">Comparte tu Obra</h4>
+<p class="text-white/40 text-sm">Obtén descuentos por reseñas con fotos</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
