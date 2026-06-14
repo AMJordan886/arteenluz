@@ -1,0 +1,93 @@
+/* ============================================================
+   ARTE EN LUZ — Critical Styles (always loaded, no CDN dependency)
+   ============================================================ */
+
+/* Custom Colors */
+:root {
+  --color-primary: #d4a843;
+  --color-primary-dark: #b8942e;
+  --color-accent-gold: #c9a96e;
+  --color-background-light: #f8f7f5;
+  --color-background-dark: #0a0a0a;
+  --color-surface-dark: #141414;
+  --color-border-dark: #2a2a2a;
+  --color-text-muted: #9ca3af;
+  --color-anthracite: #050505;
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* Backgrounds */
+.bg-background-dark { background-color: #0a0a0a; }
+.bg-background-light { background-color: #f8f7f5; }
+.bg-surface-dark { background-color: #141414; }
+.bg-primary { background-color: #d4a843; }
+.bg-primary-dark { background-color: #b8942e; }
+.bg-accent-gold { background-color: #c9a96e; }
+.bg-border-dark { background-color: #2a2a2a; }
+.bg-anthracite { background-color: #050505; }
+
+/* Text Colors */
+.text-background-dark { color: #0a0a0a; }
+.text-primary { color: #d4a843; }
+.text-primary-dark { color: #b8942e; }
+.text-accent-gold { color: #c9a96e; }
+.text-text-muted { color: #9ca3af; }
+
+/* Border Colors */
+.border-primary { border-color: #d4a843; }
+.border-border-dark { border-color: #2a2a2a; }
+.border-primary-dark { border-color: #b8942e; }
+
+/* Hover states */
+.hover\:bg-primary-dark:hover { background-color: #b8942e; }
+.hover\:bg-primary\/90:hover { background-color: rgba(212, 168, 67, 0.9); }
+.hover\:bg-primary\/10:hover { background-color: rgba(212, 168, 67, 0.1); }
+.hover\:text-primary:hover { color: #d4a843; }
+.hover\:border-primary\/30:hover { border-color: rgba(212, 168, 67, 0.3); }
+.hover\:border-primary\/40:hover { border-color: rgba(212, 168, 67, 0.4); }
+.hover\:border-primary:hover { border-color: #d4a843; }
+.hover\:shadow-\[0_0_20px_rgba\(212\,168\,67\,0\.3\)\]:hover { box-shadow: 0 0 20px rgba(212, 168, 67, 0.3); }
+
+/* Focus states */
+.focus\:ring-primary:focus { --tw-ring-color: #d4a843; }
+
+/* Group hover */
+.group:hover .group-hover\:text-primary { color: #d4a843; }
+.group:hover .group-hover\:border-primary\/20 { border-color: rgba(212, 168, 67, 0.2); }
+.group:hover .group-hover\:border-primary\/30 { border-color: rgba(212, 168, 67, 0.3); }
+
+/* Font Families */
+.font-display { font-family: 'Manrope', sans-serif; }
+.font-body { font-family: 'Manrope', sans-serif; }
+.font-serif { font-family: 'Playfair Display', serif; }
+
+/* Letter Spacing */
+.tracking-luxury { letter-spacing: 0.15em; }
+.tracking-wide { letter-spacing: 0.05em; }
+
+/* Custom shadows */
+.shadow-\[0_0_30px_rgba\(212\,168\,67\,0\.3\)\] { box-shadow: 0 0 30px rgba(212, 168, 67, 0.3); }
+
+/* Group hover underline decoration */
+.group:hover .group-hover\:underline { text-decoration: underline; }
+
+/* Peer checked */
+.peer:checked ~ .peer-checked\:opacity-100 { opacity: 1; }
+
+/* Dark mode fallbacks (for `dark:xxx` classes in HTML) */
+.dark .dark\:text-white { color: #fff; }
+.dark .dark\:text-gray-400 { color: #9ca3af; }
+.dark .dark\:text-neutral-500 { color: #d4a843; }
+.dark .dark\:text-neutral-600 { color: #9ca3af; }
+.dark .dark\:text-text-muted { color: #9ca3af; }
+.dark .dark\:text-primary { color: #d4a843; }
+.dark .dark\:bg-surface-dark { background-color: #141414; }
+.dark .dark\:bg-neutral-700 { background-color: #3f3f46; }
+.dark .dark\:bg-neutral-800 { background-color: #27272a; }
+.dark .dark\:bg-black { background-color: #000; }
+.dark .dark\:border-neutral-700 { border-color: #3f3f46; }
+.dark .dark\:border-neutral-800 { border-color: #27272a; }
+.dark .dark\:border-surface-dark { border-color: #2a2a2a; }
+.dark .dark\:bg-neutral-200 { background-color: #27272a; }
