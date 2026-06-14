@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".github/**",
+      "GUIA_MVP.md",
+      "theme.js"
+    ]
+  }
+}
