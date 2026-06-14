@@ -2,6 +2,7 @@
 
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Mi Cuenta - Seguimiento de tu Obra de Arte</title>
 <!-- Fonts -->
@@ -10,6 +11,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#d4a843",
+        "primary-dark": "#b8942e",
+        "accent-gold": "#c9a96e",
+        "background-light": "#f8f7f5",
+        "background-dark": "#0a0a0a",
+        "surface-dark": "#141414",
+        "border-dark": "#2a2a2a",
+        "text-muted": "#9ca3af",
+        anthracite: "#050505",
+      },
+      fontFamily: {
+        display: ["Manrope", "sans-serif"],
+        body: ["Manrope", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+      },
+      letterSpacing: {
+        luxury: "0.15em",
+        wide: "0.05em",
+      },
+      borderRadius: {
+        DEFAULT: "0.375rem",
+        lg: "0.75rem",
+        xl: "1rem",
+        "2xl": "1.5rem",
+        full: "9999px",
+      },
+    },
+  },
+}
+</script>
 <script src="theme.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
