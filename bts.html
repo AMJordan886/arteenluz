@@ -1,358 +1,251 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="es"><head>
+<html lang="es">
+<head>
 <meta charset="utf-8"/>
-<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>El Arte - La Magia detrás de la Luz</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Nuestra Historia · Recuerdos convertidos en arte · Arte en Luz</title>
+<meta name="description" content="La filosofía de Arte en Luz: rescatamos tus recuerdos más importantes y los convertimos en decoración emocional para el hogar. Un regalo personalizado, sentimental y único hecho con alma."/>
+<meta name="keywords" content="decoración emocional, decoración personalizada, regalo sentimental, regalo personalizado de lujo, regalo memorable, recuerdos, regalo con foto, regalo único"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Nuestra Historia · Arte en Luz"/>
+<meta property="og:description" content="No guardamos fotos. Rescatamos recuerdos y los convertimos en luz para tu hogar."/>
+<meta property="og:image" content="imagenes/clarooscuro.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..600;1,300..600&family=Manrope:wght@200..700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        primary: "#d4a843",
-        "primary-dark": "#b8942e",
-        "accent-gold": "#c9a96e",
-        "background-light": "#f8f7f5",
-        "background-dark": "#0a0a0a",
-        "surface-dark": "#141414",
-        "border-dark": "#2a2a2a",
-        "text-muted": "#9ca3af",
-        anthracite: "#050505",
-      },
-      fontFamily: {
-        display: ["Manrope", "sans-serif"],
-        body: ["Manrope", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
-      },
-      letterSpacing: {
-        luxury: "0.15em",
-        wide: "0.05em",
-      },
-      borderRadius: {
-        DEFAULT: "0.375rem",
-        lg: "0.75rem",
-        xl: "1rem",
-        "2xl": "1.5rem",
-        full: "9999px",
-      },
-    },
-  },
-}
+tailwind.config = { theme: { extend: {
+  colors: { cream:"#f6f1e9","cream-deep":"#ece2d3", ink:"#2a231d","ink-soft":"#7c7166", charcoal:"#15110c","charcoal-2":"#1f1812", gold:"#a9824c","gold-soft":"#c6a574" },
+  fontFamily: { serif:["Cormorant Garamond","serif"], sans:["Manrope","sans-serif"] },
+  letterSpacing: { luxury:"0.28em", wide:"0.12em" },
+}}};
 </script>
-<script src="theme.js"></script>
-<link rel="stylesheet" href="critical.css"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #d4a843;
-        }
-        .text-glow {
-            text-shadow: 0 0 20px rgba(212, 168, 67, 0.3);
-        }
-    </style>
+  html { scroll-behavior: smooth; } body { background:#f6f1e9; }
+  ::selection { background:#c6a574; color:#15110c; }
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity:1; transform:none; }
+  .reveal-delay-1 { transition-delay:.1s; } .reveal-delay-2 { transition-delay:.2s; }
+  .piece { position:relative; overflow:hidden; cursor:pointer; isolation:isolate; }
+  .piece .day, .piece .night { display:block; width:100%; height:100%; object-fit:cover; transition:transform 1.6s cubic-bezier(.16,1,.3,1); }
+  .piece .night { position:absolute; inset:0; opacity:0; transition:opacity 1.2s ease, transform 1.6s cubic-bezier(.16,1,.3,1); }
+  .piece:hover .night, .piece.lit .night { opacity:1; }
+  .piece:hover .day, .piece:hover .night, .piece.lit .day, .piece.lit .night { transform:scale(1.035); }
+  .piece::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit; box-shadow:0 0 0 rgba(0,0,0,0); transition:box-shadow 1.2s ease; }
+  .piece:hover::after, .piece.lit::after { box-shadow:inset 0 0 110px rgba(255,196,120,.28), 0 0 70px rgba(255,180,90,.20); }
+  .piece .hint { position:absolute; z-index:3; left:50%; bottom:1rem; transform:translateX(-50%); display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:9999px; background:rgba(20,16,11,.55); backdrop-filter:blur(8px); color:#f6f1e9; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; white-space:nowrap; transition:opacity .8s ease; pointer-events:none; }
+  .piece:hover .hint, .piece.lit .hint { opacity:0; }
+  .glow-dot { width:6px; height:6px; border-radius:9999px; background:#c6a574; box-shadow:0 0 10px 2px rgba(198,165,116,.9); animation:pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.45;} 50%{opacity:1;} }
+  .hairline { height:1px; background:linear-gradient(90deg,transparent,rgba(169,130,76,.45),transparent); }
+  @media (prefers-reduced-motion: reduce) { .reveal{opacity:1;transform:none;transition:none;} .piece .day,.piece .night{transition:opacity .4s ease;} }
+</style>
 </head>
-<body class="bg-background-dark text-white font-display antialiased selection:bg-primary selection:text-background-dark overflow-x-hidden">
-<!-- Navigation -->
-<div class="fixed top-0 z-50 w-full transition-all duration-500 bg-background-dark/60 backdrop-blur-lg border-b border-[#2a2a2a]/20">
-<div class="px-4 md:px-10 lg:px-40 flex items-center justify-between py-3">
-<a class="flex items-center gap-3 text-white group" href="index.html">
-<div class="size-7 text-primary transition-transform duration-500 group-hover:scale-110">
-<span class="material-symbols-outlined !text-2xl">light_mode</span>
-</div>
-<h2 class="text-white text-base font-bold leading-tight tracking-luxury font-serif">Arte en Luz</h2>
-</a>
-<!-- Desktop Menu -->
-<div class="hidden md:flex flex-1 justify-end gap-10 items-center">
-<nav class="flex items-center gap-10">
-<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="index.html">Inicio</a>
-<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="catalog.html">Catálogo</a>
-<a class="text-primary text-xs font-bold tracking-luxury uppercase border-b border-primary pb-0.5" href="bts.html">El Arte</a>
-<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="moments.html">Regalos</a>
-<a class="text-white/50 hover:text-primary transition-all duration-300 text-xs font-bold tracking-luxury uppercase border-b border-transparent hover:border-primary/40 pb-0.5" href="contact.html">Contacto</a>
-</nav>
-<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full size-9 bg-transparent hover:bg-primary/10 text-white/60 hover:text-primary transition-all duration-300 border border-white/10 hover:border-primary/30">
-<span class="material-symbols-outlined text-lg">shopping_bag</span>
-</button>
-</div>
-<!-- Mobile Menu Icon -->
-<div class="md:hidden text-white/50">
-<span class="material-symbols-outlined cursor-pointer">menu</span>
-</div>
-</div>
-</div>
-<!-- Hero Section -->
-<header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-<div class="absolute inset-0 z-0">
-<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-background-dark/80 to-background-dark z-10"></div>
-<div class="w-full h-full bg-cover bg-center" data-alt="Primer plano de un cuadro iluminado brillando en una habitación oscura" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDn3P3P1onc7QihNhnHJTBYxKMkoxf_RvXy_XvzsPevw6aS817ql6FUd9s9Hbp-qNYVqRBWYXLaBJ9kDH_XXNVm3WiCa7_hR1oY2ObKGDtAnfJtD2GFBg8m85A_pZnZkhSLC0aEuSRuRtN_NFqkjQYRMTqpmgdEdMoZztjCsspkHCYV3dtz3LWCyPnSLKdStYjACtyZGeow0JcoXtN_AqRv9en5JJZ7vSqSslm28WIbcoyBXbsjYcEPub78V128xjcg6V5nJQXdOJIn");'>
-</div>
-</div>
-<!-- Content -->
-<div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-10">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/[0.06] backdrop-blur-sm mb-2">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-<span class="text-primary text-[10px] font-bold uppercase tracking-luxury">Colección Editorial 2024</span>
-</div>
-<h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-2">
-                La Magia detrás <br/>
-<span class="text-white/50 italic font-light">de la Luz</span>
-</h1>
-<p class="text-lg md:text-xl text-white/40 font-light max-w-2xl leading-relaxed">
-                Creando recuerdos que brillan con luz propia. Una fusión perfecta donde la emoción se encuentra con la artesanía tradicional.
-            </p>
-<div class="flex flex-col sm:flex-row gap-6 mt-4">
-<a href="#filosofia" class="h-12 px-10 rounded-full bg-primary text-background-dark text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(212,168,67,0.3)]">
-                    Descubrir la Historia
-                    <span class="material-symbols-outlined text-lg">arrow_downward</span>
-</a>
-<a href="catalog.html" class="h-12 px-10 rounded-full border border-white/20 text-white/70 text-sm font-medium uppercase tracking-wider hover:bg-white/[0.04] hover:text-white hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm">
-<span class="material-symbols-outlined text-lg">visibility</span>
-                    Ver Catálogo
-                </a>
-</div>
-</div>
+
+<body class="font-sans text-ink antialiased overflow-x-hidden">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-700">
+  <div class="mx-auto max-w-[1500px] px-5 md:px-10 flex items-center justify-between py-5">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <span class="glow-dot"></span>
+      <span class="font-serif text-xl md:text-2xl tracking-wide text-cream md:text-cream group-hover:text-gold transition-colors duration-500" id="brand">Arte en Luz</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9">
+      <a href="catalog.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Colección</a>
+      <a href="moments.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Ocasiones</a>
+      <a href="bts.html" class="text-[11px] tracking-luxury uppercase text-gold">Historia</a>
+      <a href="contact.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Contacto</a>
+      <a href="builder.html" class="text-[11px] tracking-luxury uppercase px-6 py-3 rounded-full bg-cream text-ink hover:bg-gold hover:text-cream transition-all duration-500" id="navcta">Crear mi recuerdo</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden text-cream text-sm tracking-luxury uppercase">Menú</button>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden bg-cream/95 backdrop-blur-xl border-t border-ink/10">
+    <div class="flex flex-col px-6 py-6 gap-5">
+      <a href="catalog.html" class="text-xs tracking-luxury uppercase text-ink-soft">Colección</a>
+      <a href="moments.html" class="text-xs tracking-luxury uppercase text-ink-soft">Ocasiones</a>
+      <a href="bts.html" class="text-xs tracking-luxury uppercase text-gold">Historia</a>
+      <a href="contact.html" class="text-xs tracking-luxury uppercase text-ink-soft">Contacto</a>
+      <a href="builder.html" class="text-xs tracking-luxury uppercase text-gold">Crear mi recuerdo</a>
+    </div>
+  </div>
 </header>
-<!-- Philosophy Section (Editorial Layout) -->
-<section id="filosofia" class="py-24 md:py-32 bg-background-dark relative overflow-hidden">
-<!-- Decorative Elements -->
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
-<div class="max-w-[1280px] mx-auto px-6">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<!-- Text Content -->
-<div class="order-2 lg:order-1 flex flex-col gap-8">
-<h2 class="text-primary text-[10px] font-bold uppercase tracking-luxury flex items-center gap-4">
-<span class="w-8 h-px bg-primary/60"></span>
-                        Filosofía de la Marca
-                    </h2>
-<h3 class="text-4xl md:text-5xl font-serif font-medium italic text-white leading-tight">
-                        No imprimimos fotos. <br/>
-<span class="font-light text-white/40">Esculpimos momentos.</span>
-</h3>
-<div class="space-y-6 text-white/40 font-light text-lg leading-relaxed">
-<p>
-                            En un mundo saturado de imágenes digitales efímeras, proponemos la permanencia. Creemos que una fotografía no debe ser plana; debe tener topografía, picos y valles de emoción que solo se revelan ante la presencia de la luz.
-                        </p>
-<p>
-                            Nuestros cuadros iluminados no son simples fotografías. Son cápsulas de tiempo diseñadas para emocionar.
-                        </p>
-</div>
-<div class="pt-4">
-<a class="text-white/60 border-b border-primary/40 pb-1 hover:text-primary hover:border-primary transition-all duration-300 inline-flex items-center gap-2 text-sm tracking-wider uppercase" href="inspo.html">
-                            Leer nuestro manifiesto
-                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Visual -->
-<div class="order-1 lg:order-2 relative group">
-<div class="absolute -inset-1 bg-gradient-to-r from-primary/30 to-primary/10 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-<div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105" data-alt="Primer plano artístico de una mano sosteniendo un cuadro iluminado brillante" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBv1Hy2SqcnhF5hnyuYtCTEHeBlWDScW1NFQsrPnfVlk1DoWk4hqjF1QM_6mcbY1uyUPnkUw45mwSjd6VN7-fuDBcUHvAMIhMAHDCve9S0fusmjEzmJL6KzMPac9GKbcSHv5GKbleAq7ShDFoHKATnrTUzgX04k790ZWHyY1adeU6PHz4_HO4ohyM1_lYbHVD1J5ZcsWTPuVkdHXxgFoOZodWoSBC-ZfOhCoW_IA3xaQirEGuaE2CPs2NKFge8tNAOyXhqk1Po90zUb");'>
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-8 left-8 right-8">
-<p class="text-white/50 text-[10px] uppercase tracking-luxury mb-2">Figura 01.</p>
-<p class="text-white text-xl font-serif font-medium">Textura tangible</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center bg-charcoal overflow-hidden">
+  <img src="imagenes/oscuro.png" alt="Cuadro personalizado iluminado de una pareja en la penumbra del hogar" class="absolute inset-0 w-full h-full object-cover opacity-45" loading="eager"/>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/55 to-charcoal"></div>
+  <div class="relative text-center px-6 max-w-4xl">
+    <p class="reveal text-[11px] tracking-luxury uppercase text-gold-soft mb-8">Nuestra historia</p>
+    <h1 class="reveal reveal-delay-1 font-serif font-light text-5xl md:text-7xl lg:text-8xl leading-[1.05] text-cream">No guardamos fotos.<br/><span class="italic text-gold-soft">Rescatamos recuerdos.</span></h1>
+    <p class="reveal reveal-delay-2 text-cream/65 font-light text-lg md:text-xl mt-10 max-w-2xl mx-auto leading-relaxed">Y los convertimos en una luz que vive en tu hogar, para que ningún momento importante quede olvidado tras una pantalla.</p>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/50">
+    <span class="text-[10px] tracking-luxury uppercase">Nuestra filosofía</span>
+    <span class="w-px h-10 bg-gradient-to-b from-cream/50 to-transparent"></span>
+  </div>
 </section>
-<!-- The Process Section -->
-<section class="py-24 bg-background-dark relative">
-<div class="max-w-[1280px] mx-auto px-6">
-<div class="text-center max-w-3xl mx-auto mb-20">
-<span class="text-primary text-[10px] font-bold tracking-luxury uppercase mb-4 block">El Proceso</span>
-<h2 class="text-3xl md:text-4xl font-serif italic font-medium text-white mb-4">Del Pixel a la Materia</h2>
-<p class="text-white/40 font-light text-lg leading-relaxed">
-                    Un proceso meticuloso donde la tecnología al servicio de la emoción da vida a cada pieza.
-                </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Step 1 -->
-<div class="group bg-white/[0.02] rounded-2xl p-8 border border-white/[0.06] hover:border-primary/20 transition-all duration-500 hover:-translate-y-1">
-<div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary/80 mb-6 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
-<span class="material-symbols-outlined">image</span>
-</div>
-<h4 class="text-lg font-serif font-medium text-white mb-3">1. Análisis Espectral</h4>
-<p class="text-white/40 font-light text-sm leading-relaxed">
-                        Tu imagen es analizada en escala de grises. Las zonas oscuras se convierten en capas gruesas, las claras en capas finas.
-                    </p>
-</div>
-<!-- Step 2 -->
-<div class="group bg-white/[0.02] rounded-2xl p-8 border border-white/[0.06] hover:border-primary/20 transition-all duration-500 hover:-translate-y-1">
-<div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary/80 mb-6 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
-<span class="material-symbols-outlined">layers</span>
-</div>
-<h4 class="text-lg font-serif font-medium text-white mb-3">2. Micro-Escultura</h4>
-<p class="text-white/40 font-light text-sm leading-relaxed">
-                        Impresoras de alta precisión depositan resina capa por capa, creando un relieve topográfico con tolerancia de micras.
-                    </p>
-</div>
-<!-- Step 3 -->
-<div class="group bg-white/[0.02] rounded-2xl p-8 border border-white/[0.06] hover:border-primary/20 transition-all duration-500 hover:-translate-y-1">
-<div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary/80 mb-6 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
-<span class="material-symbols-outlined">wb_incandescent</span>
-</div>
-<h4 class="text-lg font-serif font-medium text-white mb-3">3. Revelado Lumínico</h4>
-<p class="text-white/40 font-light text-sm leading-relaxed">
-                        La pieza final parece una escultura abstracta hasta que la luz revela la imagen oculta con un rango dinámico sorprendente.
-                    </p>
-</div>
-</div>
-<!-- Interactive visual metaphor -->
-<div class="mt-20 relative rounded-2xl overflow-hidden h-[400px] md:h-[500px] group border border-white/[0.06]">
-<div class="absolute inset-0 flex">
-<div class="w-1/2 h-full bg-cover bg-center border-r border-white/[0.1] relative" data-alt="Original black and white photograph of a landscape" style='background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTs3ILk8mRUej9UUOupOgMHRud8zLoPTDYyPIiIH4A0mWHC2jIe60bJXb1doiTOku6f9Fmec1HT5xSyoTkpEBEsQz2Dn_jKbH7td9TpfV12akbeIkvw-btr1PXLK8uZauuH5r9rWEwNYF1y5_rFZS3_Zuh0xZ96yPKvRi9L-rKTYFf3v463ejiLRJoS2WaQv_OCKtUqzrED3yh9UyLmc1eGim4FB6qufkSIWY-GH-NeDQw-jPGwDVQ6EDb_WSGK9nRiwnDs3WcLbqb"); filter: grayscale(100%);'>
-<div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full">
-<span class="text-white/60 text-[10px] font-bold tracking-luxury uppercase">Original 2D</span>
-</div>
-</div>
-<div class="w-1/2 h-full bg-cover bg-center relative" data-alt="Textura de un cuadro iluminado retroiluminado del mismo paisaje" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaFY6hpSmDjAOfp0lc5p3K6d71IMcyr9VdTJO_vdIBwEK9jk6OauJAAfV3T5GXXIEfK-fN9cEl_NdZHCyVP0XBHIXDlj9cKlrLNMawD-RscVgLb0NAjX1mCEtRIL2pDpgFU4tmM1Un2IQu3ypguLuo9_dZ1dyl5gpYiVI_GjgXlNPciLBqaIJjrQ8TwSYOSgXcK4zZzbo0vg5pR3JQI-HFwxYI73z5XpiXGVDbT9Og0uOUMwKKcnJlATFrGWwGlQrKslkOklUAG_bl"); filter: sepia(100%) hue-rotate(350deg) saturate(300%) contrast(120%);'>
-<div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent w-20"></div>
-<div class="absolute bottom-6 right-6 bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full">
-<span class="text-background-dark text-[10px] font-bold tracking-luxury uppercase">Cuadro Iluminado</span>
-</div>
-</div>
-</div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center shadow-lg z-10 text-white">
-<span class="material-symbols-outlined">compare_arrows</span>
-</div>
-</div>
-</div>
+
+<!-- FILOSOFÍA -->
+<section class="bg-cream py-28 md:py-40">
+  <div class="mx-auto max-w-[1300px] px-5 md:px-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <div class="reveal">
+      <p class="text-[11px] tracking-luxury uppercase text-gold mb-7">Lo que creemos</p>
+      <h2 class="font-serif font-light text-4xl md:text-5xl text-ink leading-tight mb-8">En un mundo de imágenes que pasan, creamos permanencia.</h2>
+      <div class="space-y-6 text-ink-soft font-light text-lg leading-relaxed">
+        <p>Hacemos miles de fotos, pero las que de verdad importan acaban dormidas en la memoria de un teléfono. Ese abrazo, esa mirada, ese instante que lo cambió todo… merecen algo más.</p>
+        <p>Por eso nació Arte en Luz: para devolver a esos recuerdos el lugar que merecen. Cada pieza decora de día y, cuando cae la noche y se enciende, devuelve intacta la emoción del momento que la inspiró.</p>
+        <p>No es un cuadro. Es un recuerdo convertido en algo eterno.</p>
+      </div>
+    </div>
+    <figure class="reveal reveal-delay-1 overflow-hidden rounded-[2px] shadow-[0_40px_90px_-40px_rgba(42,35,29,.45)]">
+      <img src="imagenes/clarooscuro.png" alt="Comparativa de un cuadro personalizado apagado y encendido, mostrando el efecto de la luz" class="w-full"/>
+      <figcaption class="text-center text-[11px] tracking-luxury uppercase text-ink-soft/70 mt-4">Apagado, decora · Encendido, emociona</figcaption>
+    </figure>
+  </div>
 </section>
-<!-- Gallery Grid -->
-<section class="py-24 bg-background-dark">
-<div class="max-w-[1280px] mx-auto px-6">
-<div class="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
-<div>
-<span class="text-primary text-[10px] font-bold tracking-luxury uppercase mb-2 block">Galería</span>
-<h2 class="text-3xl md:text-4xl font-serif italic font-medium text-white mb-2">Colección Reciente</h2>
-<p class="text-white/30 font-light">Piezas únicas creadas para nuestros coleccionistas.</p>
-</div>
-<a class="text-primary hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs font-bold tracking-luxury uppercase group" href="catalog.html">
-                    Ver Galería Completa
-                    <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[300px]">
-<!-- Item 1 (Tall) -->
-<div class="lg:col-span-1 lg:row-span-2 relative group overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100" data-alt="Cuadro iluminado vertical mostrando un retrato" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsRbPCvnIGo8J1D2EF0DCsmufeiSo6lIImGUE5b5VYefvBG55waZqP-Awbl4scoF8JfUDTPwjzCjlL5Se_Di8fNsT8L0TvmIZMkgzS9Zg-cp054TnrY-5X66g0N4khV5Pkk5bqgUZgiT1jjD-YasXtZiPGfaI_bXQ4DuVHAjmGUSES3ytXlEye220008iYmM5H40fS_ugdS5HUi-sdPPVSPxO5Ef16N1I0Fa4_Oovs7KCF1lqbzwW02tq_NdfIB3xrQ-7j6xAZJW_f");'>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-<span class="text-primary text-[10px] uppercase tracking-luxury mb-1">Retrato</span>
-<h3 class="text-white font-serif font-medium text-lg">La Espera</h3>
-</div>
-</div>
-<!-- Item 2 (Wide) -->
-<div class="lg:col-span-2 relative group overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100" data-alt="Cuadro iluminado panorámico de una cordillera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc_YzWz0iturKqxvoK8C0CRXbgRukFheGewpETtv623Hu1TVa0t0A4G11r4Tpnj8E363KJtxyQ6RzZ_GzOEwMIeLnuRsZP0mid5lrjjkdol6ExQh3CVwa8jhvbmEX5a7lheKU-hYzym2hBfjjsTZneD4u3LKmc0fhOyygpCBeJCRPUrr3fgtLLU62zDwPc1OHJvXaAppg54Zx9zTWVHtp9By51wERHvcXtl56Sm5m06j6qNtV3pid5_ppsTPB11oLpZNdQVnhrMi-A");'>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-<span class="text-primary text-[10px] uppercase tracking-luxury mb-1">Paisaje</span>
-<h3 class="text-white font-serif font-medium text-lg">Amanecer Alpino</h3>
-</div>
-</div>
-<!-- Item 3 -->
-<div class="relative group overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100" data-alt="Cuadro iluminado cuadrado con detalle de una mascota" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDECx_JoKd1CAV5ble3b2Iojfx14jkXYKQX2GYKst8GIGV5emvMiLYpTXS_9OWAQ2qos1yTjsmOHJ70wQjPool0sWg-dY8NFIzKWLJ0rRKQ6HnwsoL64DpEIiPHA77uuKnqXUvo1x9Kxi5xsbTLw74iGrRGPMJksxwehm85w69RgOt9HNMQw5Nq-mjnssPB183D4S1i5dVurI-YzJjNww2zROK4FCboTmhFmSgla1sr1TKsP4Wy6UZsG7nQkxTkBAeoY6f1h2JY_V4J");'>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-<span class="text-primary text-[10px] uppercase tracking-luxury mb-1">Mascotas</span>
-<h3 class="text-white font-serif font-medium text-lg">Fiel Amigo</h3>
-</div>
-</div>
-<!-- Item 4 -->
-<div class="relative group overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100" data-alt="Patrón abstracto de textura de cuadro iluminado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5w176ochIHB6aQbssy5dew8F0F79oikbZ8hiF435wRvLf4RibCwajJIbTot8O8CzUvaqfWwd-eSK3IiXozn8O2SKe5IQoFGq3_DeFcyMr2I5IBp1LAAlq8l4MjdgpqEIRGB60COVk5y5a1kxX3ySSJRG2X1wP7axW4feLte0oN8YhoEnzUu1kyOudSKULMRZToXEnStW5X_xA6f7rP_oeG5OOWKYQIMEBBP6924O_T2aqMU0XumOdcyEhIFdmTcmCiaiEciw7QMYv");'>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-<span class="text-primary text-[10px] uppercase tracking-luxury mb-1">Abstracto</span>
-<h3 class="text-white font-serif font-medium text-lg">Geometría de Luz</h3>
-</div>
-</div>
-<!-- Item 5 -->
-<div class="lg:col-span-2 relative group overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100" data-alt="Foto familiar en cuadro iluminado retroiluminado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBXJsRJBgeZkTWkGcHJZrB38BvvfhtIzC2ajL2ct5LUTa0ktPyidrIH0GnDyZvC2mL9LkCRTqe3XXG7FkqymI8PAXiPEckwH7Y9Sm420IlOie072Mn2kLtfYZcsF3sH3zDu-xAYpzYr3XYbC6eyZQqtawJu9HuS98wWMcg4cMAjV42GqQLjFB7guzBrXYArRaH4buw8CihkBPspZOBhiDlabuOJ3Tda5RLeIAOgtNofyZpwUxA6CKgrrp5uL0E84toYZDTp9xit055J");'>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-<span class="text-primary text-[10px] uppercase tracking-luxury mb-1">Familia</span>
-<h3 class="text-white font-serif font-medium text-lg">Generaciones</h3>
-</div>
-</div>
-</div>
-</div>
+
+<!-- FRASE -->
+<section class="bg-charcoal py-28 md:py-40 text-center">
+  <div class="mx-auto max-w-4xl px-6">
+    <h2 class="reveal font-serif font-light italic text-3xl md:text-5xl leading-[1.4] text-cream">"La primera vez que lo encendí, sentí que ese momento volvía a estar conmigo. No es una foto: es presencia."</h2>
+    <p class="reveal reveal-delay-1 text-[11px] tracking-luxury uppercase text-gold-soft mt-10">Elena R. · Madrid</p>
+  </div>
 </section>
-<!-- Testimonial / Quote -->
-<section class="py-32 flex justify-center items-center bg-background-dark px-6 relative">
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px]"></div>
-<div class="max-w-4xl text-center relative z-10">
-<span class="material-symbols-outlined text-7xl text-primary/20 mb-6 font-thin">format_quote</span>
-<blockquote class="text-3xl md:text-5xl font-serif text-white/90 leading-tight italic mb-10">
-                "La primera vez que encendí el cuadro iluminado de mi abuela, sentí que ella estaba en la habitación. No es una foto, es presencia."
-            </blockquote>
-<cite class="text-primary/80 not-italic font-medium tracking-luxury text-xs uppercase">— Elena R., Madrid</cite>
-</div>
+
+<!-- PROCESO EMOCIONAL -->
+<section class="bg-cream py-28 md:py-40">
+  <div class="mx-auto max-w-[1300px] px-5 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-20">
+      <p class="reveal text-[11px] tracking-luxury uppercase text-gold mb-7">Cómo nace tu pieza</p>
+      <h2 class="reveal font-serif font-light text-4xl md:text-6xl text-ink leading-tight">Del recuerdo a la luz.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="reveal">
+        <span class="font-serif text-4xl text-gold">01</span>
+        <div class="hairline my-5"></div>
+        <h3 class="font-serif text-2xl text-ink mb-3">Elige el momento</h3>
+        <p class="text-ink-soft font-light leading-relaxed">Esa fotografía que te encoge el pecho cada vez que la ves. Reciente o de hace años: lo que importa es lo que sentiste.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="font-serif text-4xl text-gold">02</span>
+        <div class="hairline my-5"></div>
+        <h3 class="font-serif text-2xl text-ink mb-3">Le damos alma</h3>
+        <p class="text-ink-soft font-light leading-relaxed">La cuidamos con mimo, detalle a detalle, hasta convertirla en una pieza de luz única e irrepetible, como el instante que guarda.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <span class="font-serif text-4xl text-gold">03</span>
+        <div class="hairline my-5"></div>
+        <h3 class="font-serif text-2xl text-ink mb-3">Vuelve a casa</h3>
+        <p class="text-ink-soft font-light leading-relaxed">Llega lista para emocionar, presentada para regalar. Y cada vez que se enciende, ese recuerdo vuelve a estar contigo.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- CTA Footer -->
-<section class="relative py-28 bg-background-dark overflow-hidden border-t border-white/[0.06]">
-<div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-<h2 class="text-4xl md:text-5xl font-serif italic font-medium text-white mb-6">Crea tu Obra Maestra</h2>
-<p class="text-white/40 text-lg font-light mb-10 max-w-2xl mx-auto leading-relaxed">
-                Sube tu fotografía favorita y visualiza cómo se transforma en una escultura de luz eterna.
-            </p>
-<div class="flex flex-col sm:flex-row gap-6 justify-center">
-<a href="builder.html" class="h-14 px-12 rounded-full bg-primary text-background-dark text-sm font-bold uppercase tracking-wider hover:bg-primary-dark transition-all duration-300 shadow-[0_0_30px_rgba(212,168,67,0.3)] hover:shadow-[0_0_40px_rgba(212,168,67,0.5)] flex items-center justify-center gap-3">
-<span class="material-symbols-outlined">upload_file</span>
-                    Subir mi Foto
-                </a>
-<a href="catalog.html" class="h-14 px-12 rounded-full border border-white/20 text-white/60 text-sm font-medium uppercase tracking-wider hover:bg-white/[0.04] hover:text-white hover:border-white/40 transition-all duration-300 flex items-center justify-center">
-                    Ver Precios
-                </a>
-</div>
-<p class="mt-10 text-[10px] text-white/20 uppercase tracking-luxury">Envíos gratuitos a todo el mundo · Garantía de por vida</p>
-</div>
+
+<!-- GALERÍA DÍA/NOCHE -->
+<section class="bg-charcoal py-28 md:py-40">
+  <div class="mx-auto max-w-[1500px] px-5 md:px-10">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal text-[11px] tracking-luxury uppercase text-gold-soft mb-7">El detalle que emociona</p>
+      <h2 class="reveal font-serif font-light text-4xl md:text-5xl text-cream leading-tight">La magia está en la luz. Pásale el ratón.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <figure class="reveal piece rounded-[2px] aspect-[16/11]">
+        <img class="day" src="imagenes/claro%20premium%20horizontal.png" alt="Cuadro personalizado de pareja apagado en un salón"/>
+        <img class="night" src="imagenes/oscuro%20premium%20horizontal.png" alt="Cuadro personalizado de pareja iluminado en un salón"/>
+        <span class="hint"><span class="glow-dot"></span> Enciende el recuerdo</span>
+      </figure>
+      <figure class="reveal reveal-delay-1 piece rounded-[2px] aspect-[16/11]">
+        <img class="day" src="imagenes/Gemini_Generated_Image_.png" alt="Cuadro personalizado de un paseo con la mascota apagado"/>
+        <img class="night" src="imagenes/Gemini_Generated_Image_%20(1).png" alt="Cuadro personalizado de un paseo con la mascota iluminado"/>
+        <span class="hint"><span class="glow-dot"></span> Enciende el recuerdo</span>
+      </figure>
+    </div>
+  </div>
 </section>
-<!-- Footer -->
-<footer class="bg-background-dark py-12 border-t border-white/[0.06]">
-<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="flex items-center gap-2 text-white/60">
-<span class="material-symbols-outlined text-primary/80">light_mode</span>
-<span class="font-serif font-medium tracking-luxury text-sm uppercase">Arte en Luz</span>
-</div>
-<div class="flex gap-8 text-sm text-white/30 font-light">
-<a class="hover:text-white/70 transition-colors" href="#">Términos</a>
-<a class="hover:text-white/70 transition-colors" href="#">Privacidad</a>
-<a class="hover:text-white/70 transition-colors" href="contact.html">Contacto</a>
-</div>
-<div class="text-xs text-white/20 font-light">
-                © 2024 Arte en Luz
-            </div>
-</div>
+
+<!-- PARED DE GALERÍA -->
+<section class="relative bg-charcoal">
+  <img src="imagenes/Gemini_Generated_Image_%20(7).png" alt="Pared decorada con varios cuadros personalizados iluminados" class="w-full h-[55vh] md:h-[80vh] object-cover" loading="lazy"/>
+  <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-charcoal/30"></div>
+  <div class="absolute inset-0 flex items-center">
+    <div class="mx-auto max-w-[1500px] w-full px-6 md:px-10">
+      <h2 class="reveal max-w-xl font-serif font-light text-3xl md:text-5xl leading-[1.15] text-cream">Hecho con alma, para durar toda una vida.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-cream py-28 md:py-40 text-center">
+  <div class="mx-auto max-w-3xl px-6">
+    <h2 class="reveal font-serif font-light text-4xl md:text-6xl leading-[1.12] text-ink mb-8">Tu historia también merece su propia luz.</h2>
+    <p class="reveal reveal-delay-1 text-ink-soft font-light text-lg leading-relaxed mb-12 max-w-xl mx-auto">Empieza por la fotografía que más quieres. Del resto nos encargamos nosotros.</p>
+    <a href="builder.html" class="reveal reveal-delay-2 inline-flex items-center justify-center px-12 py-5 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Crear mi recuerdo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal-2 border-t border-cream/10 py-16 px-6 md:px-10">
+  <div class="mx-auto max-w-[1500px] grid md:grid-cols-3 gap-12">
+    <div>
+      <div class="flex items-center gap-3 mb-5"><span class="glow-dot"></span><span class="font-serif text-xl text-cream tracking-wide">Arte en Luz</span></div>
+      <p class="text-cream/45 font-light text-sm leading-relaxed max-w-xs">Recuerdos convertidos en arte. Decoración emocional y regalos personalizados para los momentos que merecen quedarse para siempre.</p>
+    </div>
+    <div>
+      <h4 class="text-cream/50 text-[11px] tracking-luxury uppercase mb-5">Explorar</h4>
+      <ul class="space-y-3 text-sm text-cream/55 font-light">
+        <li><a href="catalog.html" class="hover:text-gold-soft transition-colors">Colección</a></li>
+        <li><a href="moments.html" class="hover:text-gold-soft transition-colors">Ocasiones</a></li>
+        <li><a href="bts.html" class="hover:text-gold-soft transition-colors">Nuestra historia</a></li>
+        <li><a href="builder.html" class="hover:text-gold-soft transition-colors">Crear mi recuerdo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream/50 text-[11px] tracking-luxury uppercase mb-5">Contacto</h4>
+      <ul class="space-y-3 text-sm text-cream/55 font-light">
+        <li><a href="contact.html" class="hover:text-gold-soft transition-colors">Escríbenos</a></li>
+        <li><a href="https://wa.me/34XXXXXXXXX" class="hover:text-gold-soft transition-colors">WhatsApp</a></li>
+        <li><a href="#" class="hover:text-gold-soft transition-colors">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mx-auto max-w-[1500px] mt-14 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[11px] tracking-wide uppercase text-cream/30">
+    <p>© 2026 Arte en Luz · Regalos personalizados con alma</p>
+    <div class="flex gap-6"><a href="#" class="hover:text-cream/60 transition-colors">Privacidad</a><a href="#" class="hover:text-cream/60 transition-colors">Términos</a></div>
+  </div>
 </footer>
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/34XXXXXXXXX?text=Hola%20Arte%20en%20Luz%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cuadros%20iluminados" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 size-14 flex items-center justify-center rounded-full bg-[#25D366] hover:bg-[#20bd5a] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-bounce-slow">
-<svg viewBox="0 0 24 24" class="size-7 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.825 11.825 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+
+<a href="https://wa.me/34XXXXXXXXX?text=Hola%20Arte%20en%20Luz%2C%20quiero%20crear%20un%20recuerdo%20personalizado" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 size-14 flex items-center justify-center rounded-full bg-[#25D366] hover:bg-[#20bd5a] shadow-lg hover:scale-110 transition-all duration-300">
+  <svg viewBox="0 0 24 24" class="size-7 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-</body></html>
+
+<script>
+  const io = new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}})},{threshold:0.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  // Nav: transparent over dark hero, cream on scroll. Swap link colors.
+  const nav=document.getElementById("nav"), brand=document.getElementById("brand"), navcta=document.getElementById("navcta");
+  const links=document.querySelectorAll("[data-navlink]");
+  const onScroll=()=>{
+    if(window.scrollY>40){
+      nav.classList.add("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");
+      brand.classList.remove("text-cream"); brand.classList.add("text-ink");
+      links.forEach(l=>{l.classList.remove("text-cream/70");l.classList.add("text-ink-soft");});
+      navcta.classList.remove("bg-cream","text-ink"); navcta.classList.add("bg-ink","text-cream");
+    } else {
+      nav.classList.remove("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");
+      brand.classList.add("text-cream"); brand.classList.remove("text-ink");
+      links.forEach(l=>{l.classList.add("text-cream/70");l.classList.remove("text-ink-soft");});
+      navcta.classList.add("bg-cream","text-ink"); navcta.classList.remove("bg-ink","text-cream");
+    }
+  };
+  window.addEventListener("scroll",onScroll); onScroll();
+  const menuBtn=document.getElementById("menuBtn"), mobileMenu=document.getElementById("mobileMenu");
+  menuBtn.addEventListener("click",()=>mobileMenu.classList.toggle("hidden"));
+  if(window.matchMedia("(hover: none)").matches){ document.querySelectorAll(".piece").forEach(p=>{ if(p.classList.contains("lit"))return; p.addEventListener("click",ev=>{ev.preventDefault();p.classList.toggle("lit");}); }); }
+</script>
+</body>
+</html>
