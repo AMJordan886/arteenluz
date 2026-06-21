@@ -22,6 +22,12 @@
 
   var CONSENT_KEY = "ael_cookie_consent"; // "granted" | "denied"
 
+  // Newsletter: a dónde se envían las suscripciones.
+  // Por defecto usa FormSubmit (sin registro): te llegan a tu correo tras
+  // confirmar el primer email. Para usar Brevo/Mailerlite, cambia esta URL por
+  // la de su API/formulario.  Déjalo en "" para solo mostrar el "gracias".
+  var NEWSLETTER_ENDPOINT = "https://formsubmit.co/ajax/contacto@arteenluz.es";
+
   /* ----------------------- Google Analytics + Consent Mode ----------------- */
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { dataLayer.push(arguments); };
@@ -150,13 +156,45 @@
       if (href.indexOf("builder.html") !== -1) { track("clic_crear_recuerdo"); return; }
     }, true);
 
-    document.addEventListener("submit", function () {
+    document.addEventListener("submit", function (e) {
+      var f = e.target;
+      if (f && f.matches && f.matches("[data-newsletter]")) return; // gestionado aparte
       track("envio_formulario");
     }, true);
   }
 
+  function wireNewsletter() {
+    var forms = document.querySelectorAll("form[data-newsletter]");
+    Array.prototype.forEach.call(forms, function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var input = form.querySelector('input[type="email"], input[name="email"]');
+        var email = input ? input.value.trim() : "";
+        if (!email) return;
+        var msg = form.parentNode.querySelector("[data-newsletter-msg]");
+        var btn = form.querySelector('button[type="submit"], button');
+        var btnText = btn ? btn.textContent : "";
+        if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
+        track("suscripcion_newsletter");
+
+        function done() {
+          if (msg) msg.classList.remove("hidden");
+          form.reset();
+          if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        }
+
+        if (!NEWSLETTER_ENDPOINT) { done(); return; }
+        fetch(NEWSLETTER_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ email: email, _subject: "Nueva suscripción · Arte en Luz" })
+        }).then(done).catch(done);
+      });
+    });
+  }
+
   /* ------------------------------- Init ------------------------------------ */
-  function init() { buildBanner(); wireEvents(); }
+  function init() { buildBanner(); wireEvents(); wireNewsletter(); }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
