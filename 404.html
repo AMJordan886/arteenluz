@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- Analitica + cookies (Consent Mode) -->
+<script defer src="analytics.js"></script>
+<title>Página no encontrada · Arte en Luz</title>
+<meta name="robots" content="noindex, follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..600;1,300..600&family=Manrope:wght@200..700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { cream:"#f6f1e9","cream-deep":"#ece2d3", ink:"#2a231d","ink-soft":"#7c7166", charcoal:"#15110c","charcoal-2":"#1f1812", gold:"#a9824c","gold-soft":"#c6a574" },
+  fontFamily: { serif:["Cormorant Garamond","serif"], sans:["Manrope","sans-serif"] },
+  letterSpacing: { luxury:"0.28em", wide:"0.12em" },
+}}};
+</script>
+<style>
+  body { background:#f6f1e9; } ::selection { background:#c6a574; color:#15110c; }
+</style>
+</head>
+<body class="font-sans text-ink antialiased min-h-screen flex flex-col">
+  <header class="px-5 md:px-10 py-5">
+    <a href="index.html" class="inline-flex items-center gap-3 group">
+      <img src="imagenes/logo.png" alt="" class="h-9 w-auto [filter:brightness(0)] opacity-80 group-hover:opacity-100 transition-opacity duration-500"/>
+      <img src="imagenes/nombre-marca.png" alt="Arte en Luz" class="h-[18px] md:h-5 w-auto [filter:brightness(0)] opacity-80 group-hover:opacity-100 transition-opacity duration-500"/>
+    </a>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-6 text-center">
+    <div class="max-w-xl">
+      <p class="text-[11px] tracking-luxury uppercase text-gold mb-6">Error 404</p>
+      <h1 class="font-serif font-light text-5xl md:text-7xl leading-[1.05] text-ink mb-6">Esta página se ha perdido entre recuerdos.</h1>
+      <p class="text-ink-soft font-light text-lg leading-relaxed mb-10">El enlace que buscas no existe o se ha movido. Pero hay muchos momentos esperando convertirse en luz.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="index.html" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Volver al inicio</a>
+        <a href="catalog.html" class="inline-flex items-center justify-center px-10 py-4 rounded-full border border-ink/20 text-ink text-[11px] tracking-luxury uppercase hover:border-gold hover:text-gold transition-all duration-500">Ver la colección</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="px-6 md:px-10 py-8 text-center text-[11px] tracking-wide uppercase text-ink-soft/50">
+    © 2026 Arte en Luz · Regalos personalizados con alma
+  </footer>
+</body>
+</html>

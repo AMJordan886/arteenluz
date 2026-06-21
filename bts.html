@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- Analitica + cookies (Consent Mode) -->
+<script defer src="analytics.js"></script>
 
 <title>Nuestra Historia · Recuerdos convertidos en arte · Arte en Luz</title>
 <meta name="description" content="La filosofía de Arte en Luz: rescatamos tus recuerdos más importantes y los convertimos en decoración emocional para el hogar. Un regalo personalizado, sentimental y único hecho con alma."/>
@@ -51,22 +53,26 @@ tailwind.config = { theme: { extend: {
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-700">
   <div class="mx-auto max-w-[1500px] px-5 md:px-10 flex items-center justify-between py-5">
     <a href="index.html" class="flex items-center gap-3 group">
-      <span class="glow-dot"></span>
-      <span class="font-serif text-xl md:text-2xl tracking-wide text-cream md:text-cream group-hover:text-gold transition-colors duration-500" id="brand">Arte en Luz</span>
+      <img id="logoMark" src="imagenes/logo.png" alt="" class="h-9 w-auto transition-all duration-500"/>
+      <img id="logoName" src="imagenes/nombre-marca.png" alt="Arte en Luz" class="h-[18px] md:h-5 w-auto transition-all duration-500"/>
     </a>
-    <nav class="hidden md:flex items-center gap-9">
+    <nav class="hidden lg:flex items-center gap-6">
       <a href="catalog.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Colección</a>
       <a href="moments.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Ocasiones</a>
+      <a href="inspo.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Inspiración</a>
+      <a href="blog.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Blog</a>
       <a href="bts.html" class="text-[11px] tracking-luxury uppercase text-gold">Historia</a>
       <a href="contact.html" class="text-[11px] tracking-luxury uppercase text-cream/70 hover:text-gold transition-colors duration-500" data-navlink>Contacto</a>
       <a href="builder.html" class="text-[11px] tracking-luxury uppercase px-6 py-3 rounded-full bg-cream text-ink hover:bg-gold hover:text-cream transition-all duration-500" id="navcta">Crear mi recuerdo</a>
     </nav>
-    <button id="menuBtn" class="md:hidden text-cream text-sm tracking-luxury uppercase">Menú</button>
+    <button id="menuBtn" class="lg:hidden text-cream text-sm tracking-luxury uppercase">Menú</button>
   </div>
-  <div id="mobileMenu" class="md:hidden hidden bg-cream/95 backdrop-blur-xl border-t border-ink/10">
+  <div id="mobileMenu" class="lg:hidden hidden bg-cream/95 backdrop-blur-xl border-t border-ink/10">
     <div class="flex flex-col px-6 py-6 gap-5">
       <a href="catalog.html" class="text-xs tracking-luxury uppercase text-ink-soft">Colección</a>
       <a href="moments.html" class="text-xs tracking-luxury uppercase text-ink-soft">Ocasiones</a>
+      <a href="inspo.html" class="text-xs tracking-luxury uppercase text-ink-soft">Inspiración</a>
+      <a href="blog.html" class="text-xs tracking-luxury uppercase text-ink-soft">Blog</a>
       <a href="bts.html" class="text-xs tracking-luxury uppercase text-gold">Historia</a>
       <a href="contact.html" class="text-xs tracking-luxury uppercase text-ink-soft">Contacto</a>
       <a href="builder.html" class="text-xs tracking-luxury uppercase text-gold">Crear mi recuerdo</a>
@@ -192,7 +198,7 @@ tailwind.config = { theme: { extend: {
 <footer class="bg-charcoal-2 border-t border-cream/10 py-16 px-6 md:px-10">
   <div class="mx-auto max-w-[1500px] grid md:grid-cols-3 gap-12">
     <div>
-      <div class="flex items-center gap-3 mb-5"><span class="glow-dot"></span><span class="font-serif text-xl text-cream tracking-wide">Arte en Luz</span></div>
+      <img src="imagenes/logo-text-slogan%201.png" alt="Arte en Luz · Ilumina tus recuerdos" class="w-44 mb-6"/>
       <p class="text-cream/45 font-light text-sm leading-relaxed max-w-xs">Recuerdos convertidos en arte. Decoración emocional y regalos personalizados para los momentos que merecen quedarse para siempre.</p>
     </div>
     <div>
@@ -200,6 +206,8 @@ tailwind.config = { theme: { extend: {
       <ul class="space-y-3 text-sm text-cream/55 font-light">
         <li><a href="catalog.html" class="hover:text-gold-soft transition-colors">Colección</a></li>
         <li><a href="moments.html" class="hover:text-gold-soft transition-colors">Ocasiones</a></li>
+        <li><a href="inspo.html" class="hover:text-gold-soft transition-colors">Inspiración</a></li>
+        <li><a href="blog.html" class="hover:text-gold-soft transition-colors">Blog</a></li>
         <li><a href="bts.html" class="hover:text-gold-soft transition-colors">Nuestra historia</a></li>
         <li><a href="builder.html" class="hover:text-gold-soft transition-colors">Crear mi recuerdo</a></li>
       </ul>
@@ -215,7 +223,7 @@ tailwind.config = { theme: { extend: {
   </div>
   <div class="mx-auto max-w-[1500px] mt-14 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[11px] tracking-wide uppercase text-cream/30">
     <p>© 2026 Arte en Luz · Regalos personalizados con alma</p>
-    <div class="flex gap-6"><a href="#" class="hover:text-cream/60 transition-colors">Privacidad</a><a href="#" class="hover:text-cream/60 transition-colors">Términos</a></div>
+    <div class="flex gap-6"><a href="privacy.html" class="hover:text-cream/60 transition-colors">Privacidad</a><a href="terms.html" class="hover:text-cream/60 transition-colors">Términos</a><a href="aviso-legal.html" class="hover:text-cream/60 transition-colors">Aviso legal</a></div>
   </div>
 </footer>
 
@@ -227,19 +235,21 @@ tailwind.config = { theme: { extend: {
   const io = new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}})},{threshold:0.12});
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
   // Nav: transparent over dark hero, cream on scroll. Swap link colors.
-  const nav=document.getElementById("nav"), brand=document.getElementById("brand"), navcta=document.getElementById("navcta");
+  const nav=document.getElementById("nav"), navcta=document.getElementById("navcta");
+  const logoMark=document.getElementById("logoMark"), logoName=document.getElementById("logoName");
   const links=document.querySelectorAll("[data-navlink]");
+  const setLogoDark=(on)=>{ [logoMark,logoName].forEach(l=>{ if(!l)return; l.style.filter = on ? "brightness(0)" : "none"; l.style.opacity = on ? ".8" : "1"; }); };
   const onScroll=()=>{
     if(window.scrollY>40){
       nav.classList.add("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");
-      brand.classList.remove("text-cream"); brand.classList.add("text-ink");
       links.forEach(l=>{l.classList.remove("text-cream/70");l.classList.add("text-ink-soft");});
       navcta.classList.remove("bg-cream","text-ink"); navcta.classList.add("bg-ink","text-cream");
+      setLogoDark(true);
     } else {
       nav.classList.remove("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");
-      brand.classList.add("text-cream"); brand.classList.remove("text-ink");
       links.forEach(l=>{l.classList.add("text-cream/70");l.classList.remove("text-ink-soft");});
       navcta.classList.add("bg-cream","text-ink"); navcta.classList.remove("bg-ink","text-cream");
+      setLogoDark(false);
     }
   };
   window.addEventListener("scroll",onScroll); onScroll();

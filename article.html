@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- Analitica + cookies (Consent Mode) -->
+<script defer src="analytics.js"></script>
+<title id="metaTitle">Artículo · Arte en Luz</title>
+<meta id="metaDesc" name="description" content="Historias, ideas y decoración emocional de Arte en Luz."/>
+<meta name="robots" content="index, follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..600;1,300..600&family=Manrope:wght@200..700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { cream:"#f6f1e9","cream-deep":"#ece2d3", ink:"#2a231d","ink-soft":"#7c7166", charcoal:"#15110c","charcoal-2":"#1f1812", gold:"#a9824c","gold-soft":"#c6a574" },
+  fontFamily: { serif:["Cormorant Garamond","serif"], sans:["Manrope","sans-serif"] },
+  letterSpacing: { luxury:"0.28em", wide:"0.12em" },
+}}};
+</script>
+<style>
+  html { scroll-behavior: smooth; } body { background:#f6f1e9; }
+  ::selection { background:#c6a574; color:#15110c; }
+  .glow-dot { width:6px; height:6px; border-radius:9999px; background:#c6a574; box-shadow:0 0 10px 2px rgba(198,165,116,.9); }
+  /* Cuerpo del artículo (se inyecta como HTML desde la API) */
+  .article-body p { color:#5f574d; font-weight:300; font-size:1.125rem; line-height:1.9; margin:0 0 1.5rem; }
+  .article-body h2 { font-family:"Cormorant Garamond",serif; font-weight:400; font-size:2.1rem; color:#2a231d; margin:2.8rem 0 1rem; }
+  .article-body h3 { font-family:"Cormorant Garamond",serif; font-weight:400; font-size:1.6rem; color:#2a231d; margin:2rem 0 .8rem; }
+  .article-body blockquote { border-left:2px solid #a9824c; padding-left:1.4rem; margin:2rem 0; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.6rem; color:#2a231d; line-height:1.5; }
+  .article-body ul { list-style:disc; padding-left:1.4rem; margin:0 0 1.5rem; color:#5f574d; font-weight:300; }
+  .article-body li { line-height:1.8; }
+  .article-body a { color:#a9824c; border-bottom:1px solid rgba(169,130,76,.4); }
+  .article-body img { width:100%; border-radius:2px; margin:2rem 0; }
+</style>
+</head>
+<body class="font-sans text-ink antialiased overflow-x-hidden">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-700">
+  <div class="mx-auto max-w-[1500px] px-5 md:px-10 flex items-center justify-between py-5">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="imagenes/logo.png" alt="" class="h-9 w-auto [filter:brightness(0)] opacity-80 group-hover:opacity-100 transition-opacity duration-500"/>
+      <img src="imagenes/nombre-marca.png" alt="Arte en Luz" class="h-[18px] md:h-5 w-auto [filter:brightness(0)] opacity-80 group-hover:opacity-100 transition-opacity duration-500"/>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6">
+      <a href="catalog.html" class="text-[11px] tracking-luxury uppercase text-ink-soft hover:text-gold transition-colors duration-500">Colección</a>
+      <a href="moments.html" class="text-[11px] tracking-luxury uppercase text-ink-soft hover:text-gold transition-colors duration-500">Ocasiones</a>
+      <a href="inspo.html" class="text-[11px] tracking-luxury uppercase text-ink-soft hover:text-gold transition-colors duration-500">Inspiración</a>
+      <a href="blog.html" class="text-[11px] tracking-luxury uppercase text-gold">Blog</a>
+      <a href="bts.html" class="text-[11px] tracking-luxury uppercase text-ink-soft hover:text-gold transition-colors duration-500">Historia</a>
+      <a href="contact.html" class="text-[11px] tracking-luxury uppercase text-ink-soft hover:text-gold transition-colors duration-500">Contacto</a>
+      <a href="builder.html" class="text-[11px] tracking-luxury uppercase px-6 py-3 rounded-full bg-ink text-cream hover:bg-gold transition-all duration-500">Crear mi recuerdo</a>
+    </nav>
+    <a href="blog.html" class="lg:hidden text-ink-soft text-sm tracking-luxury uppercase">Blog</a>
+  </div>
+</header>
+
+<main class="bg-cream pt-32 md:pt-40 pb-24">
+  <article id="article" class="mx-auto max-w-[760px] px-6">
+    <!-- Se rellena dinámicamente -->
+    <div id="loading" class="text-center text-ink-soft font-light py-20">Cargando…</div>
+  </article>
+
+  <!-- CTA -->
+  <div class="mx-auto max-w-[760px] px-6 mt-20">
+    <div class="border-t border-ink/10 pt-12 text-center">
+      <h2 class="font-serif font-light text-3xl md:text-4xl text-ink leading-tight mb-5">¿Y si tu historia fuese la próxima?</h2>
+      <a href="builder.html" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Crear mi recuerdo</a>
+      <p class="mt-8"><a href="blog.html" class="text-[11px] tracking-luxury uppercase text-gold border-b border-gold/40 hover:border-gold pb-1 transition-all">← Volver al blog</a></p>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal-2 border-t border-cream/10 py-16 px-6 md:px-10">
+  <div class="mx-auto max-w-[1500px] grid md:grid-cols-3 gap-12">
+    <div>
+      <img src="imagenes/logo-text-slogan%201.png" alt="Arte en Luz · Ilumina tus recuerdos" class="w-44 mb-6"/>
+      <p class="text-cream/45 font-light text-sm leading-relaxed max-w-xs">Recuerdos convertidos en arte. Decoración emocional y regalos personalizados para los momentos que merecen quedarse para siempre.</p>
+    </div>
+    <div>
+      <h4 class="text-cream/50 text-[11px] tracking-luxury uppercase mb-5">Explorar</h4>
+      <ul class="space-y-3 text-sm text-cream/55 font-light">
+        <li><a href="catalog.html" class="hover:text-gold-soft transition-colors">Colección</a></li>
+        <li><a href="moments.html" class="hover:text-gold-soft transition-colors">Ocasiones</a></li>
+        <li><a href="inspo.html" class="hover:text-gold-soft transition-colors">Inspiración</a></li>
+        <li><a href="blog.html" class="hover:text-gold-soft transition-colors">Blog</a></li>
+        <li><a href="builder.html" class="hover:text-gold-soft transition-colors">Crear mi recuerdo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream/50 text-[11px] tracking-luxury uppercase mb-5">Contacto</h4>
+      <ul class="space-y-3 text-sm text-cream/55 font-light">
+        <li><a href="contact.html" class="hover:text-gold-soft transition-colors">Escríbenos</a></li>
+        <li><a href="https://wa.me/34XXXXXXXXX" class="hover:text-gold-soft transition-colors">WhatsApp</a></li>
+        <li><a href="#" class="hover:text-gold-soft transition-colors">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mx-auto max-w-[1500px] mt-14 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[11px] tracking-wide uppercase text-cream/30">
+    <p>© 2026 Arte en Luz · Regalos personalizados con alma</p>
+    <div class="flex gap-6"><a href="privacy.html" class="hover:text-cream/60 transition-colors">Privacidad</a><a href="terms.html" class="hover:text-cream/60 transition-colors">Términos</a><a href="aviso-legal.html" class="hover:text-cream/60 transition-colors">Aviso legal</a></div>
+  </div>
+</footer>
+
+<script>
+  /* =========================================================================
+     DATOS DEL ARTÍCULO
+     -------------------------------------------------------------------------
+     Hoy se sirven desde este objeto de ejemplo. Para conectar tu API, sustituye
+     el cuerpo de fetchArticle(slug) por una llamada real, p. ej.:
+
+         const res = await fetch(`https://TU-API/articulos/${slug}`);
+         if(!res.ok) return null;
+         return await res.json();
+
+     Cada artículo debe tener: slug, titulo, categoria, fecha, fechaISO, autor,
+     portada y cuerpo (HTML). El "cuerpo" se inyecta tal cual en .article-body.
+     ========================================================================= */
+  const CUERPO_DEMO = `
+    <p>Hay fotografías que llevan años dormidas en la memoria de un teléfono y que, sin embargo, guardan uno de los momentos más importantes de nuestra vida. Este es el espacio donde hablamos de ellas.</p>
+    <h2>El detalle que lo cambia todo</h2>
+    <p>No se trata de la cámara ni de la resolución. Se trata de lo que sentiste cuando se tomó esa imagen: la mirada, el abrazo, la risa que ya no recordabas.</p>
+    <blockquote>Un recuerdo no se guarda. Se vive cada vez que vuelves a mirarlo.</blockquote>
+    <p>Por eso creemos en devolver esos instantes al lugar que merecen: tu hogar, presididos por una luz cálida que los hace presentes cada noche.</p>
+    <h3>Tres ideas para empezar</h3>
+    <ul>
+      <li>Elige una fotografía con los rostros bien visibles.</li>
+      <li>Piensa en el rincón donde más tiempo pasas.</li>
+      <li>Déjate llevar por la emoción, no por la perfección técnica.</li>
+    </ul>
+    <p>Cuando quieras, puedes <a href="builder.html">crear tu propia pieza</a> en unos minutos.</p>
+  `;
+
+  const ARTICULOS_DEMO = {
+    "elegir-la-foto-perfecta": { slug:"elegir-la-foto-perfecta", categoria:"Guía", titulo:"Cómo elegir la foto perfecta para tu recuerdo", fecha:"12 jun 2026", fechaISO:"2026-06-12", autor:"Arte en Luz", portada:"imagenes/claro.png", cuerpo:CUERPO_DEMO },
+    "regalo-aniversario-inolvidable": { slug:"regalo-aniversario-inolvidable", categoria:"Ideas de regalo", titulo:"El regalo de aniversario que nadie olvida", fecha:"5 jun 2026", fechaISO:"2026-06-05", autor:"Arte en Luz", portada:"imagenes/oscuro%20premium%20horizontal.png", cuerpo:CUERPO_DEMO },
+    "decorar-con-luz": { slug:"decorar-con-luz", categoria:"Decoración", titulo:"Decorar con luz: rincones que cobran vida", fecha:"28 may 2026", fechaISO:"2026-05-28", autor:"Arte en Luz", portada:"imagenes/claro%20horizontal.png", cuerpo:CUERPO_DEMO },
+    "homenaje-a-tu-mascota": { slug:"homenaje-a-tu-mascota", categoria:"Historias", titulo:"Un homenaje a quien siempre estuvo a tu lado", fecha:"19 may 2026", fechaISO:"2026-05-19", autor:"Arte en Luz", portada:"imagenes/Gemini_Generated_Image_%20(2).png", cuerpo:CUERPO_DEMO },
+    "fotos-antiguas": { slug:"fotos-antiguas", categoria:"Inspiración", titulo:"Las fotos antiguas son las que más conmueven", fecha:"10 may 2026", fechaISO:"2026-05-10", autor:"Arte en Luz", portada:"imagenes/Gemini_Generated_Image_%20(5).png", cuerpo:CUERPO_DEMO },
+  };
+
+  async function fetchArticle(slug) {
+    // TODO: sustituir por la llamada a tu API cuando esté lista.
+    return ARTICULOS_DEMO[slug] || null;
+  }
+
+  function getSlug() {
+    return new URLSearchParams(window.location.search).get("slug");
+  }
+
+  function escapeHtml(s){ return (s||"").replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;" }[c])); }
+
+  function renderArticle(a){
+    document.getElementById("metaTitle").textContent = `${a.titulo} · Arte en Luz`;
+    document.getElementById("metaDesc").setAttribute("content", a.titulo);
+    document.title = `${a.titulo} · Arte en Luz`;
+
+    document.getElementById("article").innerHTML = `
+      <p class="text-[11px] tracking-luxury uppercase text-gold mb-5">${escapeHtml(a.categoria)}</p>
+      <h1 class="font-serif font-light text-4xl md:text-6xl leading-[1.08] text-ink mb-6">${escapeHtml(a.titulo)}</h1>
+      <div class="flex items-center gap-3 text-ink-soft/80 text-sm font-light mb-10">
+        <span class="glow-dot"></span>
+        <span>${escapeHtml(a.autor||"Arte en Luz")}</span>
+        <span class="text-ink-soft/40">·</span>
+        <time datetime="${escapeHtml(a.fechaISO||"")}">${escapeHtml(a.fecha||"")}</time>
+      </div>
+      <figure class="overflow-hidden rounded-[2px] aspect-[16/10] shadow-[0_30px_60px_-35px_rgba(42,35,29,.5)] mb-12">
+        <img src="${a.portada}" alt="${escapeHtml(a.titulo)}" class="w-full h-full object-cover"/>
+      </figure>
+      <div class="article-body">${a.cuerpo || ""}</div>
+    `;
+
+    // Datos estructurados (SEO)
+    const ld = {
+      "@context":"https://schema.org", "@type":"Article",
+      "headline": a.titulo, "image": a.portada,
+      "datePublished": a.fechaISO, "author": { "@type":"Organization", "name": a.autor||"Arte en Luz" },
+      "publisher": { "@type":"Organization", "name":"Arte en Luz" }
+    };
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  }
+
+  function renderNotFound(){
+    document.getElementById("article").innerHTML = `
+      <div class="text-center py-16">
+        <p class="text-[11px] tracking-luxury uppercase text-gold mb-5">Artículo</p>
+        <h1 class="font-serif font-light text-4xl md:text-5xl text-ink mb-5">No hemos encontrado este artículo.</h1>
+        <p class="text-ink-soft font-light text-lg mb-8">Puede que ya no exista o que el enlace no sea correcto.</p>
+        <a href="blog.html" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Ver el blog</a>
+      </div>`;
+  }
+
+  (async function init(){
+    const slug = getSlug();
+    let a = null;
+    if (slug) { try { a = await fetchArticle(slug); } catch(e) { a = null; } }
+    if (a) renderArticle(a); else renderNotFound();
+  })();
+
+  // Nav background on scroll
+  const nav=document.getElementById("nav");
+  const onScroll=()=>{ if(window.scrollY>40){nav.classList.add("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");}else{nav.classList.remove("bg-cream/90","backdrop-blur-xl","shadow-[0_1px_0_rgba(42,35,29,.08)]");} };
+  window.addEventListener("scroll",onScroll); onScroll();
+</script>
+</body>
+</html>

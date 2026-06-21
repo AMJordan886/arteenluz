@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Páginas privadas o transaccionales (no indexar)
+Disallow: /order.html
+Disallow: /tracking.html
+Disallow: /privacy.html
+Disallow: /terms.html
+Disallow: /aviso-legal.html
+
+Sitemap: https://arteenluz.es/sitemap.xml
