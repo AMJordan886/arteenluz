@@ -313,7 +313,42 @@ tailwind.config = { theme: { extend: {
           </div>
         </div>
 
-        <button id="addCart" class="w-full inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Finalizar pedido</button>
+        <!-- Datos del cliente -->
+        <div class="mt-8 mb-6">
+          <h3 class="font-serif text-2xl text-ink mb-1">Último paso: tus datos</h3>
+          <p class="text-ink-soft text-sm font-light leading-relaxed mb-5">Te escribimos para confirmar tu recuerdo y enviarte el enlace de pago. <span class="text-ink">No se cobra nada ahora.</span></p>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="cliNombre">Nombre</label>
+              <input id="cliNombre" type="text" required placeholder="Tu nombre" class="w-full bg-white/50 border border-ink/15 rounded-[2px] px-4 py-3 text-ink text-sm placeholder:text-ink-soft/50 focus:outline-none focus:border-gold transition-colors"/>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="cliEmail">Email</label>
+                <input id="cliEmail" type="email" required placeholder="tucorreo@email.com" class="w-full bg-white/50 border border-ink/15 rounded-[2px] px-4 py-3 text-ink text-sm placeholder:text-ink-soft/50 focus:outline-none focus:border-gold transition-colors"/>
+              </div>
+              <div>
+                <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="cliTel">Teléfono / WhatsApp</label>
+                <input id="cliTel" type="tel" required placeholder="+34 600 000 000" class="w-full bg-white/50 border border-ink/15 rounded-[2px] px-4 py-3 text-ink text-sm placeholder:text-ink-soft/50 focus:outline-none focus:border-gold transition-colors"/>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="cliPref">¿Cómo prefieres que te contactemos?</label>
+              <select id="cliPref" class="w-full bg-white/50 border border-ink/15 rounded-[2px] px-4 py-3 text-ink text-sm focus:outline-none focus:border-gold transition-colors">
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Email">Email</option>
+                <option value="Teléfono">Teléfono</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="cliNotas">Dedicatoria o notas (opcional)</label>
+              <textarea id="cliNotas" rows="2" placeholder="Algo que debamos saber sobre tu recuerdo…" class="w-full bg-white/50 border border-ink/15 rounded-[2px] px-4 py-3 text-ink text-sm placeholder:text-ink-soft/50 focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
+            </div>
+          </div>
+          <p id="cliError" class="hidden mt-3 text-sm text-red-500">Por favor, completa tu nombre, email y teléfono.</p>
+        </div>
+
+        <button id="addCart" class="w-full inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Enviar pedido</button>
         <button id="keepEditing" class="w-full mt-3 inline-flex items-center justify-center px-10 py-4 rounded-full border border-ink/20 text-ink text-[11px] tracking-luxury uppercase hover:border-gold hover:text-gold transition-all duration-500">Seguir personalizando</button>
         <p class="text-center text-ink-soft/60 text-[11px] tracking-luxury uppercase mt-6">Crear · Confirmar pedido · Seguimiento</p>
         <p class="text-center text-ink-soft/50 text-[11px] tracking-wide mt-2">Envío cuidado · Listo para regalar</p>
@@ -511,6 +546,31 @@ tailwind.config = { theme: { extend: {
   /* ---------- CTA FINAL ---------- */
   $("#keepEditing").addEventListener("click", ()=> showStep(1));
   $("#addCart").addEventListener("click", ()=>{
+    // Datos del cliente
+    var nombre = (document.getElementById("cliNombre").value || "").trim();
+    var email  = (document.getElementById("cliEmail").value || "").trim();
+    var tel    = (document.getElementById("cliTel").value || "").trim();
+    var pref   = document.getElementById("cliPref").value || "";
+    var notas  = (document.getElementById("cliNotas").value || "").trim();
+    var errEl  = document.getElementById("cliError");
+
+    // La fotografía es imprescindible
+    if (!state.photoFile) {
+      if (errEl) { errEl.textContent = "Sube tu fotografía en el primer paso para completar el pedido."; errEl.classList.remove("hidden"); }
+      showStep(1);
+      return;
+    }
+
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!nombre || !emailOk || !tel) {
+      if (errEl) { errEl.textContent = "Por favor, completa tu nombre, email y teléfono."; errEl.classList.remove("hidden"); }
+      var firstBad = !nombre ? "cliNombre" : (!emailOk ? "cliEmail" : "cliTel");
+      var el = document.getElementById(firstBad);
+      if (el) { el.focus(); el.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      return;
+    }
+    if (errEl) errEl.classList.add("hidden");
+
     // Guardamos la configuración para la confirmación y el seguimiento del pedido
     try {
       localStorage.setItem("arteenluz_pedido", JSON.stringify({
@@ -520,22 +580,27 @@ tailwind.config = { theme: { extend: {
         marco: CONFIG.frames[state.frame].label,
         precio: price(),
         foto: state.photo || null,
-        fotoNombre: state.photoName || null
+        fotoNombre: state.photoName || null,
+        cliente: nombre
       }));
     } catch(e) {}
 
-    // Enviar el pedido (con la foto) a Telegram como multipart/form-data.
+    // Enviar el pedido (con la foto + datos de contacto) como multipart/form-data.
     var btn = document.getElementById("addCart");
-    var prev = btn ? btn.textContent : "";
     if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
 
     var fd = new FormData();
     fd.append("tipo", "pedido");
+    fd.append("nombre", nombre);
+    fd.append("email", email);
+    fd.append("telefono", tel);
+    fd.append("contacto_preferido", pref);
     fd.append("formato", CONFIG.formats[state.format].label);
     fd.append("tamano", CONFIG.sizes[state.size].label);
     fd.append("dimensiones", CONFIG.sizes[state.size].dim);
     fd.append("marco", CONFIG.frames[state.frame].label);
     fd.append("precio", String(price()));
+    if (notas) fd.append("dedicatoria", notas);
     fd.append("origen", "web");
     fd.append("pagina", location.href);
     if (state.photoFile) fd.append("foto", state.photoFile, state.photoFile.name);
