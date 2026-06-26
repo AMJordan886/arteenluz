@@ -22,11 +22,12 @@
 
   var CONSENT_KEY = "ael_cookie_consent"; // "granted" | "denied"
 
-  // Newsletter: a dónde se envían las suscripciones.
-  // Por defecto usa FormSubmit (sin registro): te llegan a tu correo tras
-  // confirmar el primer email. Para usar Brevo/Mailerlite, cambia esta URL por
-  // la de su API/formulario.  Déjalo en "" para solo mostrar el "gracias".
-  var NEWSLETTER_ENDPOINT = "https://formsubmit.co/ajax/contacto@arteenluz.es";
+  // Newsletter: se envía al mismo servicio de Telegram, con tipo "newsletter".
+  var NEWSLETTER_ENDPOINT = "https://enviar-contacto-telegram-672955759203.europe-southwest1.run.app";
+
+  // Formularios de contacto: a dónde se envían (tu servicio en Cloud Run que
+  // reenvía a Telegram). Recibe un POST con JSON.
+  var CONTACT_ENDPOINT = "https://enviar-contacto-telegram-672955759203.europe-southwest1.run.app";
 
   /* ----------------------- Google Analytics + Consent Mode ----------------- */
   window.dataLayer = window.dataLayer || [];
@@ -158,9 +159,52 @@
 
     document.addEventListener("submit", function (e) {
       var f = e.target;
-      if (f && f.matches && f.matches("[data-newsletter]")) return; // gestionado aparte
+      // newsletter y contacto se gestionan con sus propios manejadores
+      if (f && f.matches && (f.matches("[data-newsletter]") || f.matches("[data-contact]"))) return;
       track("envio_formulario");
     }, true);
+  }
+
+  function wireContact() {
+    var forms = document.querySelectorAll("form[data-contact]");
+    Array.prototype.forEach.call(forms, function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (form.checkValidity && !form.checkValidity()) {
+          if (form.reportValidity) form.reportValidity();
+          return;
+        }
+        var data = {};
+        try { new FormData(form).forEach(function (v, k) { data[k] = v; }); } catch (err) {}
+        data.origen = "web";
+        data.pagina = location.href;
+
+        var msg = form.querySelector("[data-contact-msg]");
+        var btn = form.querySelector('button[type="submit"], button');
+        var btnText = btn ? btn.textContent : "";
+        if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
+        track("envio_formulario");
+
+        function finish(ok) {
+          if (msg) {
+            msg.textContent = ok
+              ? "¡Gracias! Hemos recibido tu mensaje y te responderemos muy pronto."
+              : "No hemos podido enviarlo. Escríbenos a contacto@arteenluz.es o por WhatsApp.";
+            msg.classList.remove("hidden", "text-gold", "text-red-500");
+            msg.classList.add(ok ? "text-gold" : "text-red-500");
+          }
+          if (ok && form.reset) form.reset();
+          if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        }
+
+        if (!CONTACT_ENDPOINT) { finish(true); return; }
+        fetch(CONTACT_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(function (r) { finish(r.ok); }).catch(function () { finish(false); });
+      });
+    });
   }
 
   function wireNewsletter() {
@@ -186,15 +230,15 @@
         if (!NEWSLETTER_ENDPOINT) { done(); return; }
         fetch(NEWSLETTER_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({ email: email, _subject: "Nueva suscripción · Arte en Luz" })
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, tipo: "newsletter", origen: "web", pagina: location.href })
         }).then(done).catch(done);
       });
     });
   }
 
   /* ------------------------------- Init ------------------------------------ */
-  function init() { buildBanner(); wireEvents(); wireNewsletter(); }
+  function init() { buildBanner(); wireEvents(); wireNewsletter(); wireContact(); }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

@@ -365,6 +365,8 @@ tailwind.config = { theme: { extend: {
     formatSurcharge: { square:0, pano:10 },
   };
   const TOTAL_STEPS = 5;
+  // Endpoint (Cloud Run → Telegram) al que se envía el pedido al finalizar.
+  const BUILDER_ENDPOINT = "https://enviar-pedido-telegram-672955759203.europe-southwest1.run.app";
 
   /* ---------- ESTADO ---------- */
   const state = { photo:null, photoName:null, format:"square", size:"medium", frame:"minimal", scene:"salon", lit:true, step:1 };
@@ -467,6 +469,7 @@ tailwind.config = { theme: { extend: {
   /* ---------- SUBIDA DE FOTO ---------- */
   function handleFile(file){
     if(!file || !file.type.startsWith("image/")) return;
+    state.photoFile = file; // archivo original, para enviarlo al finalizar
     const reader = new FileReader();
     reader.onload = (e)=>{
       state.photo = e.target.result;
@@ -520,7 +523,31 @@ tailwind.config = { theme: { extend: {
         fotoNombre: state.photoName || null
       }));
     } catch(e) {}
-    window.location.href = "order.html";
+
+    // Enviar el pedido (con la foto) a Telegram como multipart/form-data.
+    var btn = document.getElementById("addCart");
+    var prev = btn ? btn.textContent : "";
+    if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
+
+    var fd = new FormData();
+    fd.append("tipo", "pedido");
+    fd.append("formato", CONFIG.formats[state.format].label);
+    fd.append("tamano", CONFIG.sizes[state.size].label);
+    fd.append("dimensiones", CONFIG.sizes[state.size].dim);
+    fd.append("marco", CONFIG.frames[state.frame].label);
+    fd.append("precio", String(price()));
+    fd.append("origen", "web");
+    fd.append("pagina", location.href);
+    if (state.photoFile) fd.append("foto", state.photoFile, state.photoFile.name);
+
+    // Redirige al completar o, como mucho, tras 20 s (por si la subida se cuelga).
+    var redirigido = false;
+    function irAConfirmacion(){ if(!redirigido){ redirigido = true; window.location.href = "order.html"; } }
+    setTimeout(irAConfirmacion, 20000);
+
+    fetch(BUILDER_ENDPOINT, { method: "POST", body: fd })
+      .catch(function(){})
+      .finally(irAConfirmacion);
   });
 
   /* ---------- INIT ---------- */

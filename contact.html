@@ -88,26 +88,27 @@ tailwind.config = { theme: { extend: {
     <!-- form -->
     <div class="reveal lg:col-span-7">
       <h2 class="font-serif text-3xl text-ink mb-10">Envíanos un mensaje</h2>
-      <form action="#" class="space-y-8">
+      <form data-contact class="space-y-8">
         <div class="grid sm:grid-cols-2 gap-8">
           <div>
             <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="name">Nombre</label>
-            <input id="name" type="text" class="field" placeholder="Tu nombre"/>
+            <input id="name" name="nombre" type="text" required class="field" placeholder="Tu nombre"/>
           </div>
           <div>
             <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="email">Email</label>
-            <input id="email" type="email" class="field" placeholder="tucorreo@email.com"/>
+            <input id="email" name="email" type="email" required class="field" placeholder="tucorreo@email.com"/>
           </div>
         </div>
         <div>
           <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="occasion">Ocasión (opcional)</label>
-          <input id="occasion" type="text" class="field" placeholder="Aniversario, boda, regalo sorpresa…"/>
+          <input id="occasion" name="ocasion" type="text" class="field" placeholder="Aniversario, boda, regalo sorpresa…"/>
         </div>
         <div>
           <label class="block text-[11px] tracking-luxury uppercase text-ink-soft mb-2" for="message">Tu mensaje</label>
-          <textarea id="message" rows="4" class="field resize-none" placeholder="Cuéntanos qué recuerdo te gustaría convertir en luz."></textarea>
+          <textarea id="message" name="mensaje" rows="4" required class="field resize-none" placeholder="Cuéntanos qué recuerdo te gustaría convertir en luz."></textarea>
         </div>
-        <button type="button" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Enviar mensaje</button>
+        <button type="submit" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-ink text-cream text-[11px] tracking-luxury uppercase hover:bg-gold transition-all duration-500">Enviar mensaje</button>
+        <p data-contact-msg class="hidden text-sm text-gold pt-2">¡Gracias! Hemos recibido tu mensaje y te responderemos muy pronto.</p>
       </form>
     </div>
     <!-- info -->
